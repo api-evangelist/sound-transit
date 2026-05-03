@@ -1,0 +1,47 @@
+{
+  "title": "Sound Transit Arrivals And Departures Structure",
+  "description": "Structure of the arrivals-and-departures response from the Sound Transit OneBusAway API",
+  "type": "object",
+  "fields": [
+    { "name": "code", "type": "integer", "description": "HTTP status code" },
+    { "name": "currentTime", "type": "integer", "format": "int64", "description": "Server time in milliseconds" },
+    { "name": "text", "type": "string", "description": "Status message" },
+    { "name": "version", "type": "integer", "description": "API version" },
+    {
+      "name": "data",
+      "type": "object",
+      "fields": [
+        {
+          "name": "entry",
+          "type": "object",
+          "fields": [
+            {
+              "name": "arrivalsAndDepartures",
+              "type": "array",
+              "description": "List of arrivals and departures",
+              "items": {
+                "type": "object",
+                "fields": [
+                  { "name": "routeId", "type": "string" },
+                  { "name": "tripId", "type": "string" },
+                  { "name": "serviceDate", "type": "integer", "format": "int64" },
+                  { "name": "vehicleId", "type": "string" },
+                  { "name": "stopId", "type": "string" },
+                  { "name": "stopSequence", "type": "integer" },
+                  { "name": "scheduledArrivalTime", "type": "integer", "format": "int64" },
+                  { "name": "scheduledDepartureTime", "type": "integer", "format": "int64" },
+                  { "name": "predictedArrivalTime", "type": "integer", "format": "int64" },
+                  { "name": "predictedDepartureTime", "type": "integer", "format": "int64" },
+                  { "name": "predicted", "type": "boolean" },
+                  { "name": "status", "type": "string" },
+                  { "name": "routeShortName", "type": "string" },
+                  { "name": "tripHeadsign", "type": "string" }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

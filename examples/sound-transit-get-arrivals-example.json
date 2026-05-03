@@ -1,0 +1,59 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.pugetsound.onebusaway.org/api/where/arrivals-and-departures-for-stop/1_75403.json",
+    "queryParameters": {
+      "key": "your-api-key-here",
+      "minutesBefore": 0,
+      "minutesAfter": 30
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "code": 200,
+      "currentTime": 1746198600000,
+      "text": "OK",
+      "version": 2,
+      "data": {
+        "entry": {
+          "stopId": "1_75403",
+          "arrivalsAndDepartures": [
+            {
+              "routeId": "40_100223",
+              "tripId": "40_31510190",
+              "serviceDate": 1746140400000,
+              "vehicleId": "40_4225",
+              "stopId": "1_75403",
+              "stopSequence": 14,
+              "scheduledArrivalTime": 1746198900000,
+              "scheduledDepartureTime": 1746198900000,
+              "predictedArrivalTime": 1746198840000,
+              "predictedDepartureTime": 1746198840000,
+              "predicted": true,
+              "status": "EARLY",
+              "routeShortName": "Link Light Rail 1 Line",
+              "tripHeadsign": "Angle Lake"
+            },
+            {
+              "routeId": "40_100223",
+              "tripId": "40_31510195",
+              "serviceDate": 1746140400000,
+              "vehicleId": null,
+              "stopId": "1_75403",
+              "stopSequence": 14,
+              "scheduledArrivalTime": 1746199800000,
+              "scheduledDepartureTime": 1746199800000,
+              "predictedArrivalTime": 0,
+              "predictedDepartureTime": 0,
+              "predicted": false,
+              "status": "SCHEDULED",
+              "routeShortName": "Link Light Rail 1 Line",
+              "tripHeadsign": "Angle Lake"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/sound-transit/main/json-schema/sound-transit-arrival-schema.json",
+  "title": "Sound Transit Arrival And Departure",
+  "description": "Schema for a real-time arrival or departure prediction from the Sound Transit OneBusAway API",
+  "type": "object",
+  "properties": {
+    "routeId": {
+      "type": "string",
+      "description": "Route identifier"
+    },
+    "tripId": {
+      "type": "string",
+      "description": "Trip identifier"
+    },
+    "serviceDate": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Service date in milliseconds since Unix epoch"
+    },
+    "vehicleId": {
+      "type": "string",
+      "description": "Vehicle identifier if known"
+    },
+    "stopId": {
+      "type": "string",
+      "description": "Stop identifier"
+    },
+    "stopSequence": {
+      "type": "integer",
+      "description": "Sequence number of this stop within the trip"
+    },
+    "scheduledArrivalTime": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Scheduled arrival time in milliseconds since Unix epoch"
+    },
+    "scheduledDepartureTime": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Scheduled departure time in milliseconds since Unix epoch"
+    },
+    "predictedArrivalTime": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Real-time predicted arrival time in milliseconds (0 if no prediction)"
+    },
+    "predictedDepartureTime": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Real-time predicted departure time in milliseconds (0 if no prediction)"
+    },
+    "predicted": {
+      "type": "boolean",
+      "description": "Whether real-time prediction data is available for this arrival"
+    },
+    "status": {
+      "type": "string",
+      "description": "Status of the arrival (ON_TIME, EARLY, DELAYED, etc.)"
+    },
+    "routeShortName": {
+      "type": "string",
+      "description": "Short name/number of the route"
+    },
+    "tripHeadsign": {
+      "type": "string",
+      "description": "Destination headsign displayed on the vehicle"
+    }
+  },
+  "required": ["routeId", "tripId", "stopId", "scheduledArrivalTime"]
+}

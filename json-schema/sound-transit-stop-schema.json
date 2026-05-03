@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/sound-transit/main/json-schema/sound-transit-stop-schema.json",
+  "title": "Sound Transit Stop",
+  "description": "Schema for a transit stop in the Sound Transit OneBusAway API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique stop identifier"
+    },
+    "lat": {
+      "type": "number",
+      "format": "float",
+      "description": "Latitude of the stop"
+    },
+    "lon": {
+      "type": "number",
+      "format": "float",
+      "description": "Longitude of the stop"
+    },
+    "direction": {
+      "type": "string",
+      "description": "Direction of travel at this stop (N, S, E, W, NE, NW, SE, SW)"
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable name of the stop"
+    },
+    "code": {
+      "type": "string",
+      "description": "Short stop code used for text message trip planning"
+    },
+    "locationType": {
+      "type": "integer",
+      "description": "GTFS location type (0=stop, 1=station, 2=station entrance)"
+    },
+    "routeIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "IDs of routes that serve this stop"
+    },
+    "wheelchairBoarding": {
+      "type": "string",
+      "description": "Wheelchair boarding accessibility (0=unknown, 1=accessible, 2=not accessible)"
+    }
+  },
+  "required": ["id", "lat", "lon", "name"]
+}

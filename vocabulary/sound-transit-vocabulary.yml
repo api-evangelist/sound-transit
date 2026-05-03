@@ -1,0 +1,110 @@
+name: Sound Transit Vocabulary
+description: >-
+  Domain vocabulary for Sound Transit and the OneBusAway API, covering public transit
+  data standards, real-time transit feeds, and Puget Sound regional transit concepts.
+version: "1.0"
+created: "2026-05-02"
+modified: "2026-05-02"
+terms:
+  - term: GTFS
+    definition: >-
+      General Transit Feed Specification. A standardized data format for public
+      transit schedules and geographic information. Sound Transit publishes static
+      GTFS feeds for all routes and stops.
+    tags:
+      - Standard
+      - Data Format
+
+  - term: GTFS-RT
+    definition: >-
+      GTFS Realtime. An extension to the GTFS standard providing real-time updates
+      including vehicle positions, trip updates, and service alerts in Protocol
+      Buffer format.
+    tags:
+      - Standard
+      - Real-Time
+
+  - term: OneBusAway
+    definition: >-
+      An open source transit tracking platform developed at the University of Washington.
+      Sound Transit uses OneBusAway for real-time arrival predictions and trip planning APIs.
+    tags:
+      - Platform
+
+  - term: Stop
+    definition: >-
+      A physical location where passengers board or alight from transit vehicles.
+      Identified by a unique ID and characterized by GPS coordinates, stop code, name,
+      and accessible routes.
+    tags:
+      - Infrastructure
+
+  - term: Route
+    definition: >-
+      A named transit service connecting multiple stops in a consistent pattern.
+      Sound Transit routes include the 1 Line, 2 Line, T Line light rail, and ST Express buses.
+    tags:
+      - Service
+
+  - term: Trip
+    definition: >-
+      A specific journey of a vehicle on a route at a scheduled time. Each trip has
+      a headsign showing the destination and a list of stop times.
+    tags:
+      - Service
+
+  - term: Arrival And Departure
+    definition: >-
+      A prediction or scheduled time for a vehicle arriving at or departing from
+      a specific stop. Includes both scheduled and real-time predicted times.
+    tags:
+      - Real-Time
+
+  - term: Vehicle Position
+    definition: >-
+      Real-time GPS location data for an active transit vehicle including latitude,
+      longitude, and current trip assignment.
+    tags:
+      - Real-Time
+
+  - term: API Key
+    definition: >-
+      A credential required for all OneBusAway API calls. Sound Transit API keys
+      are obtained by emailing oba_api_key@soundtransit.org.
+    tags:
+      - Authentication
+
+  - term: Service Date
+    definition: >-
+      The calendar date a transit trip operates on, represented as milliseconds
+      since Unix epoch. Used to distinguish trips operating on different service days.
+    tags:
+      - Scheduling
+
+  - term: Predicted
+    definition: >-
+      A boolean flag indicating whether real-time arrival prediction data is available
+      for a given trip at a stop. When false, only scheduled times are available.
+    tags:
+      - Real-Time
+
+  - term: 1 Line
+    definition: >-
+      Sound Transit's Link Light Rail line running between Angle Lake and Lynnwood City Center,
+      serving Seattle-Tacoma International Airport, Capitol Hill, and University of Washington.
+    tags:
+      - Service
+
+  - term: OTD
+    definition: >-
+      Open Transit Data. Sound Transit's program for sharing GTFS and API data with
+      developers, researchers, and third-party application builders.
+    tags:
+      - Open Data
+
+  - term: Headsign
+    definition: >-
+      The destination display text shown on a transit vehicle indicating the final
+      stop or key destination of the trip.
+    tags:
+      - Service

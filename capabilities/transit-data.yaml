@@ -1,0 +1,235 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Sound Transit Transit Data"
+  description: >-
+    Unified capability for accessing Sound Transit real-time and scheduled transit
+    data for the Puget Sound region. Enables transit app developers, trip planners,
+    and data analysts to query routes, stops, real-time arrivals, vehicle positions,
+    and scheduled service for Sound Transit's light rail and bus network.
+  tags:
+    - Sound Transit
+    - Transit
+    - GTFS
+    - Real-Time Data
+    - Public Transportation
+    - Routes
+    - Stops
+    - Seattle
+  created: "2026-05-02"
+  modified: "2026-05-02"
+
+binds:
+  - namespace: env
+    keys:
+      SOUND_TRANSIT_API_KEY: SOUND_TRANSIT_API_KEY
+
+capability:
+  consumes:
+    - import: sound-transit-oba
+      location: ./shared/sound-transit-onebusaway.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: sound-transit-api
+      description: "Unified REST API for Sound Transit transit data including real-time arrivals and routes."
+      resources:
+        - path: /v1/agencies
+          name: agencies
+          description: Transit agency information and coverage
+          operations:
+            - method: GET
+              name: list-agencies
+              description: List all Sound Transit agencies with geographic coverage
+              call: "sound-transit-oba.list-agencies-with-coverage"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/stops
+          name: stops
+          description: Stop discovery near a location
+          operations:
+            - method: GET
+              name: list-stops
+              description: Find transit stops near a geographic location
+              call: "sound-transit-oba.list-stops-for-location"
+              with:
+                lat: "rest.lat"
+                lon: "rest.lon"
+                radius: "rest.radius"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/routes
+          name: routes
+          description: Route discovery near a location
+          operations:
+            - method: GET
+              name: list-routes
+              description: Find transit routes near a geographic location
+              call: "sound-transit-oba.list-routes-for-location"
+              with:
+                lat: "rest.lat"
+                lon: "rest.lon"
+                radius: "rest.radius"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/arrivals
+          name: arrivals
+          description: Real-time arrivals and departures for a stop
+          operations:
+            - method: GET
+              name: get-arrivals
+              description: Get real-time arrivals and departures for a transit stop
+              call: "sound-transit-oba.get-arrivals-and-departures-for-stop"
+              with:
+                id: "rest.stop_id"
+                minutesBefore: "rest.minutes_before"
+                minutesAfter: "rest.minutes_after"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/vehicles
+          name: vehicles
+          description: Active vehicle positions
+          operations:
+            - method: GET
+              name: list-vehicles
+              description: Get all currently active vehicles for an agency
+              call: "sound-transit-oba.list-vehicles-for-agency"
+              with:
+                id: "rest.agency_id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/schedules
+          name: schedules
+          description: Stop schedules
+          operations:
+            - method: GET
+              name: get-schedule
+              description: Get the full schedule for a stop on a given day
+              call: "sound-transit-oba.get-schedule-for-stop"
+              with:
+                id: "rest.stop_id"
+                date: "rest.date"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: sound-transit-mcp
+      transport: http
+      description: "MCP server for AI-assisted transit trip planning using Sound Transit data."
+      tools:
+        - name: list-transit-agencies
+          description: >-
+            List all Sound Transit transit agencies with their geographic coverage areas.
+            Use as first step to identify agency IDs for subsequent queries.
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "sound-transit-oba.list-agencies-with-coverage"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: find-nearby-stops
+          description: >-
+            Find transit stops near a geographic location. Use for trip planning,
+            finding the nearest bus stop or light rail station.
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "sound-transit-oba.list-stops-for-location"
+          with:
+            lat: "tools.lat"
+            lon: "tools.lon"
+            radius: "tools.radius"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: find-nearby-routes
+          description: >-
+            Find transit routes near a geographic location. Use to discover which
+            bus or rail lines serve an area.
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "sound-transit-oba.list-routes-for-location"
+          with:
+            lat: "tools.lat"
+            lon: "tools.lon"
+            radius: "tools.radius"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-real-time-arrivals
+          description: >-
+            Get real-time arrival and departure predictions for a transit stop.
+            Returns next arriving buses and trains with predicted times.
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "sound-transit-oba.get-arrivals-and-departures-for-stop"
+          with:
+            id: "tools.stop_id"
+            minutesBefore: "tools.minutes_before"
+            minutesAfter: "tools.minutes_after"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-stop-schedule
+          description: >-
+            Get the complete scheduled timetable for a transit stop on a specific date.
+            Use for planning trips in advance.
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "sound-transit-oba.get-schedule-for-stop"
+          with:
+            id: "tools.stop_id"
+            date: "tools.date"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-active-trips
+          description: >-
+            Get all currently active trips for a specific route. Use to track
+            live service on a route including schedule adherence.
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "sound-transit-oba.list-trips-for-route"
+          with:
+            id: "tools.route_id"
+            includeStatus: "tools.include_status"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: track-agency-vehicles
+          description: >-
+            Get the locations of all currently active vehicles for a transit agency.
+            Use for real-time vehicle tracking and fleet monitoring.
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "sound-transit-oba.list-vehicles-for-agency"
+          with:
+            id: "tools.agency_id"
+          outputParameters:
+            - type: object
+              mapping: "$."

@@ -1,0 +1,78 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "gtfs": "http://vocab.gtfs.org/terms#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Stop": "gtfs:Stop",
+    "Route": "gtfs:Route",
+    "Trip": "gtfs:Trip",
+    "Agency": "gtfs:Agency",
+    "Vehicle": "schema:Vehicle",
+    "ArrivalTime": "gtfs:StopTime",
+
+    "id": "@id",
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "lat": {
+      "@id": "schema:latitude",
+      "@type": "xsd:double"
+    },
+    "lon": {
+      "@id": "schema:longitude",
+      "@type": "xsd:double"
+    },
+    "direction": {
+      "@id": "gtfs:direction",
+      "@type": "xsd:string"
+    },
+    "code": {
+      "@id": "gtfs:code",
+      "@type": "xsd:string"
+    },
+    "locationType": {
+      "@id": "gtfs:locationType",
+      "@type": "xsd:integer"
+    },
+    "routeIds": {
+      "@id": "gtfs:servesRoute",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "wheelchairBoarding": {
+      "@id": "gtfs:wheelchairAccessible",
+      "@type": "xsd:string"
+    },
+    "shortName": {
+      "@id": "gtfs:shortName",
+      "@type": "xsd:string"
+    },
+    "longName": {
+      "@id": "gtfs:longName",
+      "@type": "xsd:string"
+    },
+    "routeShortName": {
+      "@id": "gtfs:shortName",
+      "@type": "xsd:string"
+    },
+    "tripHeadsign": {
+      "@id": "gtfs:headsign",
+      "@type": "xsd:string"
+    },
+    "scheduledArrivalTime": {
+      "@id": "gtfs:arrivalTime",
+      "@type": "xsd:integer"
+    },
+    "predictedArrivalTime": {
+      "@id": "gtfs:realTimeArrivalTime",
+      "@type": "xsd:integer"
+    },
+    "predicted": {
+      "@id": "gtfs:realTimeAvailable",
+      "@type": "xsd:boolean"
+    }
+  }
+}
