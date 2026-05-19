@@ -1,0 +1,157 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Sound Transit OneBusAway API — Arrivals And Departures
+  description: 'Sound Transit OneBusAway API — Arrivals And Departures. 2 operations. Lead operation: Get Arrival And Departure
+    For Stop. Self-contained Naftiko capability covering one Sound Transit business surface.'
+  tags:
+  - Sound Transit
+  - Arrivals And Departures
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SOUND_TRANSIT_API_KEY: SOUND_TRANSIT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: onebusaway-arrivals-and-departures
+    baseUri: https://api.pugetsound.onebusaway.org/api/where
+    description: Sound Transit OneBusAway API — Arrivals And Departures business capability. Self-contained, no shared references.
+    resources:
+    - name: arrival-and-departure-for-stop-id}.json
+      path: /arrival-and-departure-for-stop/{id}.json
+      operations:
+      - name: getarrivalanddepartureforstop
+        method: GET
+        description: Get Arrival And Departure For Stop
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Stop identifier
+          required: true
+        - name: tripId
+          in: query
+          type: string
+          description: Trip identifier
+          required: true
+        - name: serviceDate
+          in: query
+          type: integer
+          description: Service date in milliseconds since Unix epoch
+          required: true
+        - name: vehicleId
+          in: query
+          type: string
+          description: Vehicle identifier
+        - name: stopSequence
+          in: query
+          type: integer
+          description: Stop sequence number within the trip
+    - name: arrivals-and-departures-for-stop-id}.json
+      path: /arrivals-and-departures-for-stop/{id}.json
+      operations:
+      - name: getarrivalsanddeparturesforstop
+        method: GET
+        description: Get Arrivals And Departures For Stop
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Stop identifier
+          required: true
+        - name: minutesBefore
+          in: query
+          type: integer
+          description: How many minutes before now to include arrivals/departures
+        - name: minutesAfter
+          in: query
+          type: integer
+          description: How many minutes after now to include arrivals/departures
+  exposes:
+  - type: rest
+    namespace: onebusaway-arrivals-and-departures-rest
+    port: 8080
+    description: REST adapter for Sound Transit OneBusAway API — Arrivals And Departures. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/arrival-and-departure-for-stop/id-json
+      name: arrival-and-departure-for-stop-id-json
+      description: REST surface for arrival-and-departure-for-stop-id}.json.
+      operations:
+      - method: GET
+        name: getarrivalanddepartureforstop
+        description: Get Arrival And Departure For Stop
+        call: onebusaway-arrivals-and-departures.getarrivalanddepartureforstop
+        with:
+          id: rest.id
+          tripId: rest.tripId
+          serviceDate: rest.serviceDate
+          vehicleId: rest.vehicleId
+          stopSequence: rest.stopSequence
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/arrivals-and-departures-for-stop/id-json
+      name: arrivals-and-departures-for-stop-id-json
+      description: REST surface for arrivals-and-departures-for-stop-id}.json.
+      operations:
+      - method: GET
+        name: getarrivalsanddeparturesforstop
+        description: Get Arrivals And Departures For Stop
+        call: onebusaway-arrivals-and-departures.getarrivalsanddeparturesforstop
+        with:
+          id: rest.id
+          minutesBefore: rest.minutesBefore
+          minutesAfter: rest.minutesAfter
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: onebusaway-arrivals-and-departures-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Sound Transit OneBusAway API — Arrivals And Departures. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: get-arrival-and-departure-stop
+      description: Get Arrival And Departure For Stop
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: onebusaway-arrivals-and-departures.getarrivalanddepartureforstop
+      with:
+        id: tools.id
+        tripId: tools.tripId
+        serviceDate: tools.serviceDate
+        vehicleId: tools.vehicleId
+        stopSequence: tools.stopSequence
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-arrivals-and-departures-stop
+      description: Get Arrivals And Departures For Stop
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: onebusaway-arrivals-and-departures.getarrivalsanddeparturesforstop
+      with:
+        id: tools.id
+        minutesBefore: tools.minutesBefore
+        minutesAfter: tools.minutesAfter
+      outputParameters:
+      - type: object
+        mapping: $.

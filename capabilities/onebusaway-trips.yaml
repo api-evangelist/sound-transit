@@ -1,0 +1,234 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Sound Transit OneBusAway API — Trips
+  description: 'Sound Transit OneBusAway API — Trips. 4 operations. Lead operation: Get Trip Details. Self-contained Naftiko
+    capability covering one Sound Transit business surface.'
+  tags:
+  - Sound Transit
+  - Trips
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SOUND_TRANSIT_API_KEY: SOUND_TRANSIT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: onebusaway-trips
+    baseUri: https://api.pugetsound.onebusaway.org/api/where
+    description: Sound Transit OneBusAway API — Trips business capability. Self-contained, no shared references.
+    resources:
+    - name: trip-details-id}.json
+      path: /trip-details/{id}.json
+      operations:
+      - name: gettripdetails
+        method: GET
+        description: Get Trip Details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Trip identifier
+          required: true
+        - name: serviceDate
+          in: query
+          type: integer
+          description: Service date in milliseconds since Unix epoch
+    - name: trip-id}.json
+      path: /trip/{id}.json
+      operations:
+      - name: gettrip
+        method: GET
+        description: Get Trip
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Trip identifier
+          required: true
+    - name: trips-for-location.json
+      path: /trips-for-location.json
+      operations:
+      - name: listtripsforlocation
+        method: GET
+        description: List Trips For Location
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: lat
+          in: query
+          type: number
+          required: true
+        - name: lon
+          in: query
+          type: number
+          required: true
+        - name: latSpan
+          in: query
+          type: number
+          description: Latitude span for the bounding box
+          required: true
+        - name: lonSpan
+          in: query
+          type: number
+          description: Longitude span for the bounding box
+          required: true
+    - name: trips-for-route-id}.json
+      path: /trips-for-route/{id}.json
+      operations:
+      - name: listtripsforroute
+        method: GET
+        description: List Trips For Route
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Route identifier
+          required: true
+        - name: includeStatus
+          in: query
+          type: boolean
+          description: Include real-time status information
+  exposes:
+  - type: rest
+    namespace: onebusaway-trips-rest
+    port: 8080
+    description: REST adapter for Sound Transit OneBusAway API — Trips. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/trip-details/id-json
+      name: trip-details-id-json
+      description: REST surface for trip-details-id}.json.
+      operations:
+      - method: GET
+        name: gettripdetails
+        description: Get Trip Details
+        call: onebusaway-trips.gettripdetails
+        with:
+          id: rest.id
+          serviceDate: rest.serviceDate
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/trip/id-json
+      name: trip-id-json
+      description: REST surface for trip-id}.json.
+      operations:
+      - method: GET
+        name: gettrip
+        description: Get Trip
+        call: onebusaway-trips.gettrip
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/trips-for-location-json
+      name: trips-for-location-json
+      description: REST surface for trips-for-location.json.
+      operations:
+      - method: GET
+        name: listtripsforlocation
+        description: List Trips For Location
+        call: onebusaway-trips.listtripsforlocation
+        with:
+          lat: rest.lat
+          lon: rest.lon
+          latSpan: rest.latSpan
+          lonSpan: rest.lonSpan
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/trips-for-route/id-json
+      name: trips-for-route-id-json
+      description: REST surface for trips-for-route-id}.json.
+      operations:
+      - method: GET
+        name: listtripsforroute
+        description: List Trips For Route
+        call: onebusaway-trips.listtripsforroute
+        with:
+          id: rest.id
+          includeStatus: rest.includeStatus
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: onebusaway-trips-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Sound Transit OneBusAway API — Trips. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-trip-details
+      description: Get Trip Details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: onebusaway-trips.gettripdetails
+      with:
+        id: tools.id
+        serviceDate: tools.serviceDate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-trip
+      description: Get Trip
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: onebusaway-trips.gettrip
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-trips-location
+      description: List Trips For Location
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: onebusaway-trips.listtripsforlocation
+      with:
+        lat: tools.lat
+        lon: tools.lon
+        latSpan: tools.latSpan
+        lonSpan: tools.lonSpan
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-trips-route
+      description: List Trips For Route
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: onebusaway-trips.listtripsforroute
+      with:
+        id: tools.id
+        includeStatus: tools.includeStatus
+      outputParameters:
+      - type: object
+        mapping: $.
