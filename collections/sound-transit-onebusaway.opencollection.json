@@ -1,0 +1,654 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sound Transit OneBusAway API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Agencies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Agencies With Coverage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pugetsound.onebusaway.org/api/where/agencies-with-coverage.json",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+              }
+            ]
+          },
+          "docs": "List all supported transit agencies along with their geographic coverage areas."
+        },
+        {
+          "info": {
+            "name": "Get Agency",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pugetsound.onebusaway.org/api/where/agency/:id.json",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique agency identifier"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific transit agency."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Routes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Route",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pugetsound.onebusaway.org/api/where/route/:id.json",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique route identifier"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific transit route."
+        },
+        {
+          "info": {
+            "name": "List Routes For Agency",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pugetsound.onebusaway.org/api/where/routes-for-agency/:id.json",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Agency identifier"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+              }
+            ]
+          },
+          "docs": "List all transit routes for a specific agency."
+        },
+        {
+          "info": {
+            "name": "List Routes For Location",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pugetsound.onebusaway.org/api/where/routes-for-location.json",
+            "params": [
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude of the search location"
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Longitude of the search location"
+              },
+              {
+                "name": "radius",
+                "value": "",
+                "type": "query",
+                "description": "Search radius in meters"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Route name search query"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+              }
+            ]
+          },
+          "docs": "Search for transit routes near a geographic location."
+        },
+        {
+          "info": {
+            "name": "Get Shape",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pugetsound.onebusaway.org/api/where/shape/:id.json",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Shape identifier"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+              }
+            ]
+          },
+          "docs": "Get polyline shape details for a route or trip."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Stops",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Stop",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pugetsound.onebusaway.org/api/where/stop/:id.json",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique stop identifier"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific transit stop."
+        },
+        {
+          "info": {
+            "name": "List Stops For Location",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pugetsound.onebusaway.org/api/where/stops-for-location.json",
+            "params": [
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude of the search location"
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Longitude of the search location"
+              },
+              {
+                "name": "radius",
+                "value": "",
+                "type": "query",
+                "description": "Search radius in meters (default 500)"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Stop code or name search query"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+              }
+            ]
+          },
+          "docs": "Search for transit stops near a geographic location."
+        },
+        {
+          "info": {
+            "name": "List Stops For Route",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pugetsound.onebusaway.org/api/where/stops-for-route/:id.json",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Route identifier"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+              }
+            ]
+          },
+          "docs": "Get all stops and travel paths for a specific route."
+        },
+        {
+          "info": {
+            "name": "Get Schedule For Stop",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pugetsound.onebusaway.org/api/where/schedule-for-stop/:id.json",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Stop identifier"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "Service date in YYYY-MM-DD format (default today)"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+              }
+            ]
+          },
+          "docs": "Get the full schedule for a stop on a particular day."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Arrivals And Departures",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Arrivals And Departures For Stop",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pugetsound.onebusaway.org/api/where/arrivals-and-departures-for-stop/:id.json",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Stop identifier"
+              },
+              {
+                "name": "minutesBefore",
+                "value": "",
+                "type": "query",
+                "description": "How many minutes before now to include arrivals/departures"
+              },
+              {
+                "name": "minutesAfter",
+                "value": "",
+                "type": "query",
+                "description": "How many minutes after now to include arrivals/departures"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+              }
+            ]
+          },
+          "docs": "Get current real-time arrivals and departures for a transit stop."
+        },
+        {
+          "info": {
+            "name": "Get Arrival And Departure For Stop",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pugetsound.onebusaway.org/api/where/arrival-and-departure-for-stop/:id.json",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Stop identifier"
+              },
+              {
+                "name": "tripId",
+                "value": "",
+                "type": "query",
+                "description": "Trip identifier"
+              },
+              {
+                "name": "serviceDate",
+                "value": "",
+                "type": "query",
+                "description": "Service date in milliseconds since Unix epoch"
+              },
+              {
+                "name": "vehicleId",
+                "value": "",
+                "type": "query",
+                "description": "Vehicle identifier"
+              },
+              {
+                "name": "stopSequence",
+                "value": "",
+                "type": "query",
+                "description": "Stop sequence number within the trip"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+              }
+            ]
+          },
+          "docs": "Get details for a specific arrival or departure at a stop."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Trips",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Trip",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pugetsound.onebusaway.org/api/where/trip/:id.json",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Trip identifier"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific transit trip."
+        },
+        {
+          "info": {
+            "name": "Get Trip Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pugetsound.onebusaway.org/api/where/trip-details/:id.json",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Trip identifier"
+              },
+              {
+                "name": "serviceDate",
+                "value": "",
+                "type": "query",
+                "description": "Service date in milliseconds since Unix epoch"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+              }
+            ]
+          },
+          "docs": "Get extended details for a trip including stop times and schedule deviation."
+        },
+        {
+          "info": {
+            "name": "List Trips For Route",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pugetsound.onebusaway.org/api/where/trips-for-route/:id.json",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Route identifier"
+              },
+              {
+                "name": "includeStatus",
+                "value": "",
+                "type": "query",
+                "description": "Include real-time status information"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+              }
+            ]
+          },
+          "docs": "Get all currently active trips for a specific route."
+        },
+        {
+          "info": {
+            "name": "List Trips For Location",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pugetsound.onebusaway.org/api/where/trips-for-location.json",
+            "params": [
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "latSpan",
+                "value": "",
+                "type": "query",
+                "description": "Latitude span for the bounding box"
+              },
+              {
+                "name": "lonSpan",
+                "value": "",
+                "type": "query",
+                "description": "Longitude span for the bounding box"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+              }
+            ]
+          },
+          "docs": "Get all active trips near a geographic location."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Vehicles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Trip For Vehicle",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pugetsound.onebusaway.org/api/where/trip-for-vehicle/:id.json",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Vehicle identifier"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+              }
+            ]
+          },
+          "docs": "Get the current trip details for a specific vehicle."
+        },
+        {
+          "info": {
+            "name": "List Vehicles For Agency",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pugetsound.onebusaway.org/api/where/vehicles-for-agency/:id.json",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Agency identifier"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+              }
+            ]
+          },
+          "docs": "Get all currently active vehicles for a transit agency."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "System",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Current Time",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pugetsound.onebusaway.org/api/where/current-time.json",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+              }
+            ]
+          },
+          "docs": "Retrieve the current server time."
+        },
+        {
+          "info": {
+            "name": "Get Server Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pugetsound.onebusaway.org/api/where/config.json",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+              }
+            ]
+          },
+          "docs": "Get server deployment configuration details."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

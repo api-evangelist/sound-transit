@@ -1,8 +1,10 @@
 aid: sound-transit
 name: Sound Transit
-description: Sound Transit is a regional transit authority serving the Seattle-Puget Sound area of Washington State, operating
-  light rail, commuter rail, and express bus services. The Sound Transit Open Transit Data (OTD) program provides GTFS static
-  and real-time data feeds, OneBusAway API access, and GTFS-RT service alerts for transit application developers and researchers.
+description: >-
+  Sound Transit is a regional transit authority serving the Seattle-Puget Sound area of Washington State, operating
+  light rail, commuter rail, and express bus services. The Sound Transit Open Transit Data (OTD) program provides GTFS
+  static and real-time data feeds, OneBusAway API access, and GTFS-RT service alerts for transit application developers
+  and researchers.
 type: Index
 position: Consumer
 access: 3rd-Party
@@ -22,45 +24,33 @@ specificationVersion: '0.19'
 apis:
   - aid: sound-transit:sound-transit-onebusaway-api
     name: Sound Transit OneBusAway API
-    description: The Sound Transit OneBusAway API provides access to real-time and scheduled transit data for the Puget Sound
-      region. Supports route information, stop locations, real-time arrivals and departures, vehicle positions, and trip details
-      for 1 Line, 2 Line, T Line, and ST Express routes.
+    description: >-
+      The Sound Transit OneBusAway API provides access to real-time and scheduled transit data for the Puget Sound
+      region. Supports route information, stop locations, real-time arrivals and departures, vehicle positions, and trip
+      details for 1 Line, 2 Line, T Line, and ST Express routes.
     humanURL: https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd
     baseURL: https://api.pugetsound.onebusaway.org/api/where
     tags:
-    - Transit
-    - GTFS
-    - Real-Time
-    - Routes
-    - Stops
-    - Vehicles
+      - Transit
+      - GTFS
+      - Real-Time
+      - Routes
+      - Stops
+      - Vehicles
     properties:
-    - type: Documentation
-      url: https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd
-    - type: Reference
-      url: http://developer.onebusaway.org/
-    - type: GTFS Downloads
-      url: https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd/otd-downloads
-    - type: OpenAPI
-      url: https://raw.githubusercontent.com/api-evangelist/sound-transit/refs/heads/main/openapi/sound-transit-onebusaway-openapi.yml
-    - type: NaftikoCapability
-      url: capabilities/onebusaway-agencies.yaml
-    - type: NaftikoCapability
-      url: capabilities/onebusaway-arrivals-and-departures.yaml
-    - type: NaftikoCapability
-      url: capabilities/onebusaway-routes.yaml
-    - type: NaftikoCapability
-      url: capabilities/onebusaway-stops.yaml
-    - type: NaftikoCapability
-      url: capabilities/onebusaway-system.yaml
-    - type: NaftikoCapability
-      url: capabilities/onebusaway-trips.yaml
-    - type: NaftikoCapability
-      url: capabilities/onebusaway-vehicles.yaml
+      - type: Documentation
+        url: https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd
+      - type: Reference
+        url: http://developer.onebusaway.org/
+      - type: GTFS Downloads
+        url: https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd/otd-downloads
+      - type: OpenAPI
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/sound-transit/refs/heads/main/openapi/sound-transit-onebusaway-openapi.yml
     contact:
-    - FN: Sound Transit Open Transit Data
-      url: https://www.soundtransit.org/
-      email: open_transit_data@soundtransit.org
+      - FN: Sound Transit Open Transit Data
+        url: https://www.soundtransit.org/
+        email: open_transit_data@soundtransit.org
 common:
   - type: GitHubOrganization
     url: https://github.com/SoundTransit

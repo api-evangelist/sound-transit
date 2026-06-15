@@ -1,0 +1,2125 @@
+{
+  "item": [
+    {
+      "id": "d04f0373-98dc-4963-b802-3e56fac022e6",
+      "name": "Agencies",
+      "description": {
+        "content": "Transit agency information and coverage",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "57bfe96f-d38d-499c-a83d-0b134ca12210",
+          "name": "List Agencies With Coverage",
+          "request": {
+            "name": "List Agencies With Coverage",
+            "description": {
+              "content": "List all supported transit agencies along with their geographic coverage areas.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agencies-with-coverage.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ccc18c09-2d74-442c-a8d5-8f65c31f4fa9",
+              "name": "List of agencies with coverage areas",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agencies-with-coverage.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8745,\n  \"currentTime\": 4642,\n  \"text\": \"string\",\n  \"version\": 1828,\n  \"data\": {\n    \"list\": [\n      {\n        \"agencyId\": \"string\",\n        \"lat\": 341.9009273352247,\n        \"lon\": 8679.743537741648,\n        \"latSpan\": 9152.562996435156,\n        \"lonSpan\": 7036.776806205812\n      },\n      {\n        \"agencyId\": \"string\",\n        \"lat\": 9959.648962234905,\n        \"lon\": 2943.7922624155076,\n        \"latSpan\": 1647.8932867797214,\n        \"lonSpan\": 4317.82856646715\n      }\n    ],\n    \"references\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0288e141-eb59-4b43-a5ac-a03d0b21b86d",
+              "name": "Unauthorized - invalid API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agencies-with-coverage.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2d5efd95-ac07-4ca7-82c6-3d2e1a4cfb86",
+          "name": "Get Agency",
+          "request": {
+            "name": "Get Agency",
+            "description": {
+              "content": "Retrieve details for a specific transit agency.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agency",
+                "{{id}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7d0b9cfa-d4ff-46f7-8cdb-b2cf709b012f",
+              "name": "Agency details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agency",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7044,\n  \"currentTime\": 9092,\n  \"text\": \"string\",\n  \"version\": 9350,\n  \"data\": {\n    \"entry\": {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"url\": \"https://hmEIdcGfvWPzMxDZtYbaK.dqgxUw-tnvGs11f-C36pfluy+rLBmSIruKY5D\",\n      \"timezone\": \"string\",\n      \"lang\": \"string\",\n      \"phone\": \"string\",\n      \"fareUrl\": \"http://exjLnEopfxssYsxFEUV.bsifPCt4gQFtKIYiKK8-1USl6xzN1Lo\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b17342fc-0259-44f8-a98c-d3c1f0059fef",
+              "name": "Agency not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agency",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "8bc41f7e-2490-45d9-a035-5498949c463c",
+      "name": "Routes",
+      "description": {
+        "content": "Route definitions and schedules",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "59d6665a-757d-4bf4-a8e0-c53ef6b3e69f",
+          "name": "Get Route",
+          "request": {
+            "name": "Get Route",
+            "description": {
+              "content": "Retrieve details for a specific transit route.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "route",
+                "{{id}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "967f6021-aa02-465c-b10b-02cb7fc191ec",
+              "name": "Route details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "route",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9980,\n  \"currentTime\": 7710,\n  \"text\": \"string\",\n  \"version\": 5480,\n  \"data\": {\n    \"entry\": {\n      \"id\": \"string\",\n      \"agencyId\": \"string\",\n      \"shortName\": \"string\",\n      \"longName\": \"string\",\n      \"description\": \"string\",\n      \"type\": 2331,\n      \"url\": \"http://yYJNlkETffpZubKA.apsd9-lcXdWgey8hMk-KtixK2AKiRbaqi+x.tzXQkcB.MaVdb0eY\",\n      \"color\": \"string\",\n      \"textColor\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "60112ae3-09b3-4899-96c9-aa262d779809",
+              "name": "Route not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "route",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ba488afa-0dc5-4913-b07e-18160e41fe57",
+          "name": "List Routes For Agency",
+          "request": {
+            "name": "List Routes For Agency",
+            "description": {
+              "content": "List all transit routes for a specific agency.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "routes-for-agency",
+                "{{id}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "426b2d6c-ec29-4cb1-ac12-5b310c3b3e50",
+              "name": "List of routes for the agency",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "routes-for-agency",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 593,\n  \"currentTime\": 4104,\n  \"text\": \"string\",\n  \"version\": 8841,\n  \"data\": {\n    \"list\": [\n      {\n        \"id\": \"string\",\n        \"agencyId\": \"string\",\n        \"shortName\": \"string\",\n        \"longName\": \"string\",\n        \"description\": \"string\",\n        \"type\": 8693,\n        \"url\": \"https://dnRQXJJjufrzGCAWNAaF.tjjZZ8SwFtGF.7Jvy80so2eeIP4f\",\n        \"color\": \"string\",\n        \"textColor\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"agencyId\": \"string\",\n        \"shortName\": \"string\",\n        \"longName\": \"string\",\n        \"description\": \"string\",\n        \"type\": 5068,\n        \"url\": \"http://aNHamDcLvHzmiMWssvLeyFUvxMKzjrc.frcVkzt5HbMhe8,QEZ-TzMBlva2S-NyVDfIZiHZhcxZHtRjZXQwB+S8gMfHQSftqb\",\n        \"color\": \"string\",\n        \"textColor\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "123c7bd6-075d-4a2f-84af-4ad943c1ef3d",
+          "name": "List Routes For Location",
+          "request": {
+            "name": "List Routes For Location",
+            "description": {
+              "content": "Search for transit routes near a geographic location.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "routes-for-location.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<float>",
+                  "description": "(Required) Latitude of the search location"
+                },
+                {
+                  "disabled": false,
+                  "key": "lon",
+                  "value": "<float>",
+                  "description": "(Required) Longitude of the search location"
+                },
+                {
+                  "disabled": false,
+                  "key": "radius",
+                  "value": "<integer>",
+                  "description": "Search radius in meters"
+                },
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "Route name search query"
+                },
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cf8d23b7-81df-4ca7-b383-d7fe3e3e0786",
+              "name": "List of routes near the location",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "routes-for-location.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "radius",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9205,\n  \"currentTime\": 5573,\n  \"text\": \"string\",\n  \"version\": 9175,\n  \"data\": {\n    \"list\": [\n      {\n        \"id\": \"string\",\n        \"agencyId\": \"string\",\n        \"shortName\": \"string\",\n        \"longName\": \"string\",\n        \"description\": \"string\",\n        \"type\": 898,\n        \"url\": \"https://I.lmLTQnQYd-OXMtMnClhd9iI9xm\",\n        \"color\": \"string\",\n        \"textColor\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"agencyId\": \"string\",\n        \"shortName\": \"string\",\n        \"longName\": \"string\",\n        \"description\": \"string\",\n        \"type\": 5400,\n        \"url\": \"http://dMnARnnTPOLgoHOpZhPgMcGIW.jeaX2LIDc3qD,imu6IA06CBXDyi,NpEzLx659gUV.UzMExuEYHO6x.hx2u2incsqUFNPT+5aWOVAxT3lx2zJa\",\n        \"color\": \"string\",\n        \"textColor\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5fb0510f-5b69-41f0-8b09-9ede06f2b60e",
+          "name": "Get Shape",
+          "request": {
+            "name": "Get Shape",
+            "description": {
+              "content": "Get polyline shape details for a route or trip.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shape",
+                "{{id}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e3421d5c-2ed9-4acb-a0b8-f8379d933b81",
+              "name": "Shape polyline data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shape",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5529,\n  \"currentTime\": 5805,\n  \"text\": \"string\",\n  \"version\": 8333,\n  \"data\": {\n    \"entry\": {\n      \"points\": \"string\",\n      \"length\": 7620\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "d5d542e3-acff-47d6-8a4f-d35e44dcf177",
+      "name": "Stops",
+      "description": {
+        "content": "Stop locations and schedules",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "74360850-b582-4afb-bdb5-0b2ef19c3950",
+          "name": "Get Stop",
+          "request": {
+            "name": "Get Stop",
+            "description": {
+              "content": "Retrieve details for a specific transit stop.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stop",
+                "{{id}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8cad5582-b5fc-4bc7-aa3f-7356c98375db",
+              "name": "Stop details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stop",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9978,\n  \"currentTime\": 3900,\n  \"text\": \"string\",\n  \"version\": 6363,\n  \"data\": {\n    \"entry\": {\n      \"id\": \"string\",\n      \"lat\": 4822.642937587629,\n      \"lon\": 3758.955027399132,\n      \"direction\": \"string\",\n      \"name\": \"string\",\n      \"code\": \"string\",\n      \"locationType\": 1900,\n      \"routeIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"wheelchairBoarding\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6394c687-34a1-421f-9a71-71038ce84c4a",
+              "name": "Stop not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stop",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c935e41a-2a4f-4d2f-95a8-2a4769a63d93",
+          "name": "List Stops For Location",
+          "request": {
+            "name": "List Stops For Location",
+            "description": {
+              "content": "Search for transit stops near a geographic location.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stops-for-location.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<float>",
+                  "description": "(Required) Latitude of the search location"
+                },
+                {
+                  "disabled": false,
+                  "key": "lon",
+                  "value": "<float>",
+                  "description": "(Required) Longitude of the search location"
+                },
+                {
+                  "disabled": false,
+                  "key": "radius",
+                  "value": "500",
+                  "description": "Search radius in meters (default 500)"
+                },
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "Stop code or name search query"
+                },
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3d70adf9-e48c-46c1-895b-f7e0bc135792",
+              "name": "List of stops near the location",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stops-for-location.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "radius",
+                      "value": "500"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2445,\n  \"currentTime\": 8856,\n  \"text\": \"string\",\n  \"version\": 2847,\n  \"data\": {\n    \"list\": [\n      {\n        \"id\": \"string\",\n        \"lat\": 8939.159420343993,\n        \"lon\": 3019.8715417168887,\n        \"direction\": \"string\",\n        \"name\": \"string\",\n        \"code\": \"string\",\n        \"locationType\": 5953,\n        \"routeIds\": [\n          \"string\",\n          \"string\"\n        ],\n        \"wheelchairBoarding\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"lat\": 5356.987838176931,\n        \"lon\": 9218.699745599597,\n        \"direction\": \"string\",\n        \"name\": \"string\",\n        \"code\": \"string\",\n        \"locationType\": 7850,\n        \"routeIds\": [\n          \"string\",\n          \"string\"\n        ],\n        \"wheelchairBoarding\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b3a881e2-e4f1-4e4e-ae9d-0a5056c98b35",
+          "name": "List Stops For Route",
+          "request": {
+            "name": "List Stops For Route",
+            "description": {
+              "content": "Get all stops and travel paths for a specific route.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stops-for-route",
+                "{{id}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f8a0007e-c24d-4dfe-8ab8-5ff208345a85",
+              "name": "Stops and paths for the route",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stops-for-route",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8559,\n  \"currentTime\": 3474,\n  \"text\": \"string\",\n  \"version\": 6465,\n  \"data\": {\n    \"entry\": {\n      \"routeId\": \"string\",\n      \"stopIds\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4ddd2d2f-fba3-415d-af6a-dc575b1fa980",
+          "name": "Get Schedule For Stop",
+          "request": {
+            "name": "Get Schedule For Stop",
+            "description": {
+              "content": "Get the full schedule for a stop on a particular day.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "schedule-for-stop",
+                "{{id}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "date",
+                  "value": "<date>",
+                  "description": "Service date in YYYY-MM-DD format (default today)"
+                },
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f4366731-8dfc-41f4-94aa-8321801cf0fe",
+              "name": "Full schedule for the stop",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "schedule-for-stop",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1044,\n  \"currentTime\": 6480,\n  \"text\": \"string\",\n  \"version\": 7898,\n  \"data\": {\n    \"entry\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "f58cb583-8881-4339-9f0e-dfbdd4f2be5a",
+      "name": "Arrivals And Departures",
+      "description": {
+        "content": "Real-time and scheduled arrival/departure information",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ae0f2ee4-5cfc-41ce-b288-1a78c1e4ea9f",
+          "name": "Get Arrivals And Departures For Stop",
+          "request": {
+            "name": "Get Arrivals And Departures For Stop",
+            "description": {
+              "content": "Get current real-time arrivals and departures for a transit stop.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "arrivals-and-departures-for-stop",
+                "{{id}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "minutesBefore",
+                  "value": "5",
+                  "description": "How many minutes before now to include arrivals/departures"
+                },
+                {
+                  "disabled": false,
+                  "key": "minutesAfter",
+                  "value": "35",
+                  "description": "How many minutes after now to include arrivals/departures"
+                },
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bce126cc-9686-4b1f-b1af-3768d67625b4",
+              "name": "Real-time arrivals and departures",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "arrivals-and-departures-for-stop",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "minutesBefore",
+                      "value": "5"
+                    },
+                    {
+                      "key": "minutesAfter",
+                      "value": "35"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1064,\n  \"currentTime\": 7970,\n  \"text\": \"string\",\n  \"version\": 4366,\n  \"data\": {\n    \"entry\": {\n      \"arrivalsAndDepartures\": [\n        {\n          \"routeId\": \"string\",\n          \"tripId\": \"string\",\n          \"serviceDate\": 2323,\n          \"vehicleId\": \"string\",\n          \"stopId\": \"string\",\n          \"stopSequence\": 2225,\n          \"scheduledArrivalTime\": 7521,\n          \"scheduledDepartureTime\": 3090,\n          \"predictedArrivalTime\": 1120,\n          \"predictedDepartureTime\": 8481,\n          \"predicted\": true,\n          \"status\": \"string\",\n          \"routeShortName\": \"string\",\n          \"tripHeadsign\": \"string\"\n        },\n        {\n          \"routeId\": \"string\",\n          \"tripId\": \"string\",\n          \"serviceDate\": 973,\n          \"vehicleId\": \"string\",\n          \"stopId\": \"string\",\n          \"stopSequence\": 1221,\n          \"scheduledArrivalTime\": 4080,\n          \"scheduledDepartureTime\": 9817,\n          \"predictedArrivalTime\": 3149,\n          \"predictedDepartureTime\": 3656,\n          \"predicted\": false,\n          \"status\": \"string\",\n          \"routeShortName\": \"string\",\n          \"tripHeadsign\": \"string\"\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "facffc6f-d6d5-4004-94a3-987f124a3559",
+          "name": "Get Arrival And Departure For Stop",
+          "request": {
+            "name": "Get Arrival And Departure For Stop",
+            "description": {
+              "content": "Get details for a specific arrival or departure at a stop.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "arrival-and-departure-for-stop",
+                "{{id}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "tripId",
+                  "value": "<string>",
+                  "description": "(Required) Trip identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "serviceDate",
+                  "value": "<long>",
+                  "description": "(Required) Service date in milliseconds since Unix epoch"
+                },
+                {
+                  "disabled": false,
+                  "key": "vehicleId",
+                  "value": "<string>",
+                  "description": "Vehicle identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "stopSequence",
+                  "value": "<integer>",
+                  "description": "Stop sequence number within the trip"
+                },
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fd939178-2316-4881-a8fa-5070cdadacfb",
+              "name": "Arrival/departure details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "arrival-and-departure-for-stop",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tripId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "serviceDate",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "vehicleId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "stopSequence",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1669,\n  \"currentTime\": 244,\n  \"text\": \"string\",\n  \"version\": 7960,\n  \"data\": {\n    \"entry\": {\n      \"routeId\": \"string\",\n      \"tripId\": \"string\",\n      \"serviceDate\": 6671,\n      \"vehicleId\": \"string\",\n      \"stopId\": \"string\",\n      \"stopSequence\": 7689,\n      \"scheduledArrivalTime\": 4790,\n      \"scheduledDepartureTime\": 667,\n      \"predictedArrivalTime\": 233,\n      \"predictedDepartureTime\": 7803,\n      \"predicted\": false,\n      \"status\": \"string\",\n      \"routeShortName\": \"string\",\n      \"tripHeadsign\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "6a7c455e-7918-4f61-9d11-daf2b48e7fd1",
+      "name": "Trips",
+      "description": {
+        "content": "Trip details and active vehicle positions",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3833b9dd-e67e-45c0-9466-5be142f3f8c8",
+          "name": "Get Trip",
+          "request": {
+            "name": "Get Trip",
+            "description": {
+              "content": "Retrieve details for a specific transit trip.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "trip",
+                "{{id}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ec6ed1a0-acb1-4bdb-ba1a-098542757dee",
+              "name": "Trip details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trip",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 438,\n  \"currentTime\": 5902,\n  \"text\": \"string\",\n  \"version\": 8477,\n  \"data\": {\n    \"entry\": {\n      \"id\": \"string\",\n      \"routeId\": \"string\",\n      \"serviceId\": \"string\",\n      \"tripHeadsign\": \"string\",\n      \"tripShortName\": \"string\",\n      \"directionId\": \"string\",\n      \"shapeId\": \"string\",\n      \"blockId\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6993dec1-f76f-4400-89ec-6a796cb9ec41",
+          "name": "Get Trip Details",
+          "request": {
+            "name": "Get Trip Details",
+            "description": {
+              "content": "Get extended details for a trip including stop times and schedule deviation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "trip-details",
+                "{{id}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "serviceDate",
+                  "value": "<long>",
+                  "description": "Service date in milliseconds since Unix epoch"
+                },
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "98401488-f89a-44d6-ab32-3a6489db531d",
+              "name": "Extended trip details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trip-details",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "serviceDate",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 238,\n  \"currentTime\": 3709,\n  \"text\": \"string\",\n  \"version\": 1822,\n  \"data\": {\n    \"entry\": {\n      \"tripId\": \"string\",\n      \"serviceDate\": 3512,\n      \"status\": {}\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9cc4883a-bbd6-41ae-84c3-8f90c77dfd84",
+          "name": "List Trips For Route",
+          "request": {
+            "name": "List Trips For Route",
+            "description": {
+              "content": "Get all currently active trips for a specific route.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "trips-for-route",
+                "{{id}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "includeStatus",
+                  "value": "<boolean>",
+                  "description": "Include real-time status information"
+                },
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e85ac912-3698-440a-a1ca-4a86bc08fa99",
+              "name": "Active trips for the route",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trips-for-route",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeStatus",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8921,\n  \"currentTime\": 794,\n  \"text\": \"string\",\n  \"version\": 4369,\n  \"data\": {\n    \"list\": [\n      {\n        \"id\": \"string\",\n        \"routeId\": \"string\",\n        \"serviceId\": \"string\",\n        \"tripHeadsign\": \"string\",\n        \"tripShortName\": \"string\",\n        \"directionId\": \"string\",\n        \"shapeId\": \"string\",\n        \"blockId\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"routeId\": \"string\",\n        \"serviceId\": \"string\",\n        \"tripHeadsign\": \"string\",\n        \"tripShortName\": \"string\",\n        \"directionId\": \"string\",\n        \"shapeId\": \"string\",\n        \"blockId\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ea6d8456-984a-4111-bfcf-5731050223e5",
+          "name": "List Trips For Location",
+          "request": {
+            "name": "List Trips For Location",
+            "description": {
+              "content": "Get all active trips near a geographic location.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "trips-for-location.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<float>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "lon",
+                  "value": "<float>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "latSpan",
+                  "value": "<float>",
+                  "description": "(Required) Latitude span for the bounding box"
+                },
+                {
+                  "disabled": false,
+                  "key": "lonSpan",
+                  "value": "<float>",
+                  "description": "(Required) Longitude span for the bounding box"
+                },
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "db553b19-5e6f-4eb5-9c05-592099a55343",
+              "name": "Active trips near the location",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trips-for-location.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "latSpan",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lonSpan",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6137,\n  \"currentTime\": 7765,\n  \"text\": \"string\",\n  \"version\": 9284,\n  \"data\": {\n    \"list\": [\n      {\n        \"id\": \"string\",\n        \"routeId\": \"string\",\n        \"serviceId\": \"string\",\n        \"tripHeadsign\": \"string\",\n        \"tripShortName\": \"string\",\n        \"directionId\": \"string\",\n        \"shapeId\": \"string\",\n        \"blockId\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"routeId\": \"string\",\n        \"serviceId\": \"string\",\n        \"tripHeadsign\": \"string\",\n        \"tripShortName\": \"string\",\n        \"directionId\": \"string\",\n        \"shapeId\": \"string\",\n        \"blockId\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "90f80106-7669-48fb-8870-ba36c9a59d33",
+      "name": "Vehicles",
+      "description": {
+        "content": "Active vehicle locations and assignments",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "892a9008-e072-417c-a9e0-3f1349d58578",
+          "name": "Get Trip For Vehicle",
+          "request": {
+            "name": "Get Trip For Vehicle",
+            "description": {
+              "content": "Get the current trip details for a specific vehicle.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "trip-for-vehicle",
+                "{{id}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6f6c994b-1f69-4299-a478-365d9743c268",
+              "name": "Trip details for the vehicle",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trip-for-vehicle",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9880,\n  \"currentTime\": 5689,\n  \"text\": \"string\",\n  \"version\": 605,\n  \"data\": {\n    \"entry\": {\n      \"tripId\": \"string\",\n      \"serviceDate\": 1221,\n      \"status\": {}\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9a2ed7bd-515b-402f-9ecd-509a5ffdc1a5",
+          "name": "List Vehicles For Agency",
+          "request": {
+            "name": "List Vehicles For Agency",
+            "description": {
+              "content": "Get all currently active vehicles for a transit agency.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vehicles-for-agency",
+                "{{id}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b4ec6ddf-07f1-4394-967c-02ce209e393d",
+              "name": "Active vehicles for the agency",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles-for-agency",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9797,\n  \"currentTime\": 9275,\n  \"text\": \"string\",\n  \"version\": 8704,\n  \"data\": {\n    \"list\": [\n      {\n        \"vehicleId\": \"string\",\n        \"lastUpdateTime\": 7201,\n        \"lastLocationUpdateTime\": 6182,\n        \"location\": {\n          \"lat\": 5011.007561238093,\n          \"lon\": 2512.2084203527993\n        },\n        \"tripId\": \"string\",\n        \"tripStatus\": \"string\",\n        \"phase\": \"string\"\n      },\n      {\n        \"vehicleId\": \"string\",\n        \"lastUpdateTime\": 6006,\n        \"lastLocationUpdateTime\": 7024,\n        \"location\": {\n          \"lat\": 9286.50973430024,\n          \"lon\": 1449.0617112362947\n        },\n        \"tripId\": \"string\",\n        \"tripStatus\": \"string\",\n        \"phase\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "14affcdb-91f0-4ea7-a981-46f738fbd483",
+      "name": "System",
+      "description": {
+        "content": "System utilities and configuration",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2c6ed008-9467-40e7-be37-d81ef7c86202",
+          "name": "Get Current Time",
+          "request": {
+            "name": "Get Current Time",
+            "description": {
+              "content": "Retrieve the current server time.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "current-time.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b18965b3-090e-4468-bdc7-f37a298b2e13",
+              "name": "Current server time",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "current-time.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 99,\n  \"currentTime\": 7874,\n  \"text\": \"string\",\n  \"version\": 4412,\n  \"data\": {\n    \"entry\": {\n      \"time\": 7615,\n      \"readableTime\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "853e505d-a74a-4eb5-9953-c446028b20b7",
+          "name": "Get Server Configuration",
+          "request": {
+            "name": "Get Server Configuration",
+            "description": {
+              "content": "Get server deployment configuration details.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "config.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6d522210-6525-4560-be1a-d86b047307e5",
+              "name": "Server configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "config.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1846,\n  \"currentTime\": 6453,\n  \"text\": \"string\",\n  \"version\": 6265,\n  \"data\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pugetsound.onebusaway.org/api/where",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) Vehicle identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "id"
+    }
+  ],
+  "info": {
+    "_postman_id": "67abc047-9f44-4301-a79e-3002048bf5e4",
+    "name": "Sound Transit OneBusAway API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Sound Transit OneBusAway API provides access to real-time and scheduled transit data for the Puget Sound region including routes, stops, arrivals, departures, and vehicle positions. Supports real-time data for the 1 Line, 2 Line, T Line, and ST Express bus routes.\n\nContact Support:\n Name: Sound Transit Open Transit Data\n Email: open_transit_data@soundtransit.org",
+      "type": "text/plain"
+    }
+  }
+}
