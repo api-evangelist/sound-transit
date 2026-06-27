@@ -70,7 +70,7 @@ common:
     url: https://www.transit.land/feeds/f-c23-soundtransit
   - type: OneBusAway
     url: https://onebusaway.org/
-  - type: Terms of Use
+  - type: TermsOfService
     url: https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd/transit-data-terms-use
   - type: API Key Request
     url: mailto:oba_api_key@soundtransit.org
