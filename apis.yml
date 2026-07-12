@@ -52,6 +52,8 @@ apis:
         url: https://www.soundtransit.org/
         email: open_transit_data@soundtransit.org
 common:
+  - type: DomainSecurity
+    url: security/sound-transit-domain-security.yml
   - type: GitHubOrganization
     url: https://github.com/SoundTransit
   - type: LinkedIn
