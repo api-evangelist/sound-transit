@@ -1,0 +1,214 @@
+generated: '2026-07-15'
+method: generated
+source: openapi/sound-transit-onebusaway-openapi.yml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 20
+  by_action_class:
+    connected: 20
+  by_consequence:
+    read: 20
+  human_in_the_loop_required: 0
+operations:
+- path: /agencies-with-coverage.json
+  method: get
+  operationId: listAgenciesWithCoverage
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /agency/{id}.json
+  method: get
+  operationId: getAgency
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /route/{id}.json
+  method: get
+  operationId: getRoute
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /routes-for-agency/{id}.json
+  method: get
+  operationId: listRoutesForAgency
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /routes-for-location.json
+  method: get
+  operationId: listRoutesForLocation
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /stop/{id}.json
+  method: get
+  operationId: getStop
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /stops-for-location.json
+  method: get
+  operationId: listStopsForLocation
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /stops-for-route/{id}.json
+  method: get
+  operationId: listStopsForRoute
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /schedule-for-stop/{id}.json
+  method: get
+  operationId: getScheduleForStop
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /arrivals-and-departures-for-stop/{id}.json
+  method: get
+  operationId: getArrivalsAndDeparturesForStop
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /arrival-and-departure-for-stop/{id}.json
+  method: get
+  operationId: getArrivalAndDepartureForStop
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /trip/{id}.json
+  method: get
+  operationId: getTrip
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /trip-details/{id}.json
+  method: get
+  operationId: getTripDetails
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /trips-for-route/{id}.json
+  method: get
+  operationId: listTripsForRoute
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /trips-for-location.json
+  method: get
+  operationId: listTripsForLocation
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /trip-for-vehicle/{id}.json
+  method: get
+  operationId: getTripForVehicle
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /vehicles-for-agency/{id}.json
+  method: get
+  operationId: listVehiclesForAgency
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /current-time.json
+  method: get
+  operationId: getCurrentTime
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /config.json
+  method: get
+  operationId: getConfig
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /shape/{id}.json
+  method: get
+  operationId: getShape
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
