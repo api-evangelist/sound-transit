@@ -1,0 +1,241 @@
+openapi: 3.0.0
+info:
+  title: Sound Transit OneBusAway Agencies Stops API
+  description: The Sound Transit OneBusAway API provides access to real-time and scheduled transit data for the Puget Sound region including routes, stops, arrivals, departures, and vehicle positions. Supports real-time data for the 1 Line, 2 Line, T Line, and ST Express bus routes.
+  version: '2.0'
+  contact:
+    name: Sound Transit Open Transit Data
+    email: open_transit_data@soundtransit.org
+    url: https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd
+  license:
+    name: Open Data
+    url: https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd/transit-data-terms-use
+servers:
+- url: https://api.pugetsound.onebusaway.org/api/where
+  description: Puget Sound OneBusAway API
+tags:
+- name: Stops
+  description: Stop locations and schedules
+paths:
+  /stop/{id}.json:
+    get:
+      operationId: getStop
+      summary: Get Stop
+      description: Retrieve details for a specific transit stop.
+      tags:
+      - Stops
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique stop identifier
+        schema:
+          type: string
+      - $ref: '#/components/parameters/ApiKey'
+      responses:
+        '200':
+          description: Stop details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StopResponse'
+        '404':
+          description: Stop not found
+  /stops-for-location.json:
+    get:
+      operationId: listStopsForLocation
+      summary: List Stops For Location
+      description: Search for transit stops near a geographic location.
+      tags:
+      - Stops
+      parameters:
+      - name: lat
+        in: query
+        required: true
+        description: Latitude of the search location
+        schema:
+          type: number
+          format: float
+      - name: lon
+        in: query
+        required: true
+        description: Longitude of the search location
+        schema:
+          type: number
+          format: float
+      - name: radius
+        in: query
+        required: false
+        description: Search radius in meters (default 500)
+        schema:
+          type: integer
+          default: 500
+      - name: query
+        in: query
+        required: false
+        description: Stop code or name search query
+        schema:
+          type: string
+      - $ref: '#/components/parameters/ApiKey'
+      responses:
+        '200':
+          description: List of stops near the location
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StopsResponse'
+  /stops-for-route/{id}.json:
+    get:
+      operationId: listStopsForRoute
+      summary: List Stops For Route
+      description: Get all stops and travel paths for a specific route.
+      tags:
+      - Stops
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Route identifier
+        schema:
+          type: string
+      - $ref: '#/components/parameters/ApiKey'
+      responses:
+        '200':
+          description: Stops and paths for the route
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StopsForRouteResponse'
+  /schedule-for-stop/{id}.json:
+    get:
+      operationId: getScheduleForStop
+      summary: Get Schedule For Stop
+      description: Get the full schedule for a stop on a particular day.
+      tags:
+      - Stops
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Stop identifier
+        schema:
+          type: string
+      - name: date
+        in: query
+        required: false
+        description: Service date in YYYY-MM-DD format (default today)
+        schema:
+          type: string
+          format: date
+      - $ref: '#/components/parameters/ApiKey'
+      responses:
+        '200':
+          description: Full schedule for the stop
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StopScheduleResponse'
+components:
+  schemas:
+    StopResponse:
+      allOf:
+      - $ref: '#/components/schemas/BaseResponse'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              entry:
+                $ref: '#/components/schemas/Stop'
+    StopsForRouteResponse:
+      allOf:
+      - $ref: '#/components/schemas/BaseResponse'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              entry:
+                type: object
+                properties:
+                  routeId:
+                    type: string
+                  stopIds:
+                    type: array
+                    items:
+                      type: string
+                  polylines:
+                    type: array
+                    items:
+                      type: object
+    StopScheduleResponse:
+      allOf:
+      - $ref: '#/components/schemas/BaseResponse'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              entry:
+                type: object
+    StopsResponse:
+      allOf:
+      - $ref: '#/components/schemas/BaseResponse'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              list:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Stop'
+    Stop:
+      type: object
+      properties:
+        id:
+          type: string
+        lat:
+          type: number
+          format: float
+        lon:
+          type: number
+          format: float
+        direction:
+          type: string
+        name:
+          type: string
+        code:
+          type: string
+        locationType:
+          type: integer
+        routeIds:
+          type: array
+          items:
+            type: string
+        wheelchairBoarding:
+          type: string
+    BaseResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: HTTP status code
+        currentTime:
+          type: integer
+          format: int64
+          description: Current server time in milliseconds
+        text:
+          type: string
+          description: Human-readable status message
+        version:
+          type: integer
+          description: API version
+  parameters:
+    ApiKey:
+      name: key
+      in: query
+      required: true
+      description: API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)
+      schema:
+        type: string

@@ -1,0 +1,229 @@
+openapi: 3.0.0
+info:
+  title: Sound Transit OneBusAway Agencies Trips API
+  description: The Sound Transit OneBusAway API provides access to real-time and scheduled transit data for the Puget Sound region including routes, stops, arrivals, departures, and vehicle positions. Supports real-time data for the 1 Line, 2 Line, T Line, and ST Express bus routes.
+  version: '2.0'
+  contact:
+    name: Sound Transit Open Transit Data
+    email: open_transit_data@soundtransit.org
+    url: https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd
+  license:
+    name: Open Data
+    url: https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd/transit-data-terms-use
+servers:
+- url: https://api.pugetsound.onebusaway.org/api/where
+  description: Puget Sound OneBusAway API
+tags:
+- name: Trips
+  description: Trip details and active vehicle positions
+paths:
+  /trip/{id}.json:
+    get:
+      operationId: getTrip
+      summary: Get Trip
+      description: Retrieve details for a specific transit trip.
+      tags:
+      - Trips
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Trip identifier
+        schema:
+          type: string
+      - $ref: '#/components/parameters/ApiKey'
+      responses:
+        '200':
+          description: Trip details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TripResponse'
+  /trip-details/{id}.json:
+    get:
+      operationId: getTripDetails
+      summary: Get Trip Details
+      description: Get extended details for a trip including stop times and schedule deviation.
+      tags:
+      - Trips
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Trip identifier
+        schema:
+          type: string
+      - name: serviceDate
+        in: query
+        required: false
+        description: Service date in milliseconds since Unix epoch
+        schema:
+          type: integer
+          format: int64
+      - $ref: '#/components/parameters/ApiKey'
+      responses:
+        '200':
+          description: Extended trip details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TripDetailsResponse'
+  /trips-for-route/{id}.json:
+    get:
+      operationId: listTripsForRoute
+      summary: List Trips For Route
+      description: Get all currently active trips for a specific route.
+      tags:
+      - Trips
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Route identifier
+        schema:
+          type: string
+      - name: includeStatus
+        in: query
+        required: false
+        description: Include real-time status information
+        schema:
+          type: boolean
+      - $ref: '#/components/parameters/ApiKey'
+      responses:
+        '200':
+          description: Active trips for the route
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TripsResponse'
+  /trips-for-location.json:
+    get:
+      operationId: listTripsForLocation
+      summary: List Trips For Location
+      description: Get all active trips near a geographic location.
+      tags:
+      - Trips
+      parameters:
+      - name: lat
+        in: query
+        required: true
+        schema:
+          type: number
+          format: float
+      - name: lon
+        in: query
+        required: true
+        schema:
+          type: number
+          format: float
+      - name: latSpan
+        in: query
+        required: true
+        description: Latitude span for the bounding box
+        schema:
+          type: number
+          format: float
+      - name: lonSpan
+        in: query
+        required: true
+        description: Longitude span for the bounding box
+        schema:
+          type: number
+          format: float
+      - $ref: '#/components/parameters/ApiKey'
+      responses:
+        '200':
+          description: Active trips near the location
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TripsResponse'
+components:
+  schemas:
+    BaseResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: HTTP status code
+        currentTime:
+          type: integer
+          format: int64
+          description: Current server time in milliseconds
+        text:
+          type: string
+          description: Human-readable status message
+        version:
+          type: integer
+          description: API version
+    TripResponse:
+      allOf:
+      - $ref: '#/components/schemas/BaseResponse'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              entry:
+                $ref: '#/components/schemas/Trip'
+    Trip:
+      type: object
+      properties:
+        id:
+          type: string
+        routeId:
+          type: string
+        serviceId:
+          type: string
+        tripHeadsign:
+          type: string
+        tripShortName:
+          type: string
+        directionId:
+          type: string
+        shapeId:
+          type: string
+        blockId:
+          type: string
+    TripDetailsResponse:
+      allOf:
+      - $ref: '#/components/schemas/BaseResponse'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              entry:
+                type: object
+                properties:
+                  tripId:
+                    type: string
+                  serviceDate:
+                    type: integer
+                    format: int64
+                  status:
+                    type: object
+                  stopTimes:
+                    type: array
+                    items:
+                      type: object
+    TripsResponse:
+      allOf:
+      - $ref: '#/components/schemas/BaseResponse'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              list:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Trip'
+  parameters:
+    ApiKey:
+      name: key
+      in: query
+      required: true
+      description: API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)
+      schema:
+        type: string

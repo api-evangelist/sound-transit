@@ -1,0 +1,189 @@
+openapi: 3.0.0
+info:
+  title: Sound Transit OneBusAway Agencies Arrivals And Departures API
+  description: The Sound Transit OneBusAway API provides access to real-time and scheduled transit data for the Puget Sound region including routes, stops, arrivals, departures, and vehicle positions. Supports real-time data for the 1 Line, 2 Line, T Line, and ST Express bus routes.
+  version: '2.0'
+  contact:
+    name: Sound Transit Open Transit Data
+    email: open_transit_data@soundtransit.org
+    url: https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd
+  license:
+    name: Open Data
+    url: https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd/transit-data-terms-use
+servers:
+- url: https://api.pugetsound.onebusaway.org/api/where
+  description: Puget Sound OneBusAway API
+tags:
+- name: Arrivals And Departures
+  description: Real-time and scheduled arrival/departure information
+paths:
+  /arrivals-and-departures-for-stop/{id}.json:
+    get:
+      operationId: getArrivalsAndDeparturesForStop
+      summary: Get Arrivals And Departures For Stop
+      description: Get current real-time arrivals and departures for a transit stop.
+      tags:
+      - Arrivals And Departures
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Stop identifier
+        schema:
+          type: string
+      - name: minutesBefore
+        in: query
+        required: false
+        description: How many minutes before now to include arrivals/departures
+        schema:
+          type: integer
+          default: 5
+      - name: minutesAfter
+        in: query
+        required: false
+        description: How many minutes after now to include arrivals/departures
+        schema:
+          type: integer
+          default: 35
+      - $ref: '#/components/parameters/ApiKey'
+      responses:
+        '200':
+          description: Real-time arrivals and departures
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArrivalsAndDeparturesResponse'
+  /arrival-and-departure-for-stop/{id}.json:
+    get:
+      operationId: getArrivalAndDepartureForStop
+      summary: Get Arrival And Departure For Stop
+      description: Get details for a specific arrival or departure at a stop.
+      tags:
+      - Arrivals And Departures
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Stop identifier
+        schema:
+          type: string
+      - name: tripId
+        in: query
+        required: true
+        description: Trip identifier
+        schema:
+          type: string
+      - name: serviceDate
+        in: query
+        required: true
+        description: Service date in milliseconds since Unix epoch
+        schema:
+          type: integer
+          format: int64
+      - name: vehicleId
+        in: query
+        required: false
+        description: Vehicle identifier
+        schema:
+          type: string
+      - name: stopSequence
+        in: query
+        required: false
+        description: Stop sequence number within the trip
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/ApiKey'
+      responses:
+        '200':
+          description: Arrival/departure details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArrivalAndDepartureResponse'
+components:
+  schemas:
+    ArrivalAndDepartureResponse:
+      allOf:
+      - $ref: '#/components/schemas/BaseResponse'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              entry:
+                $ref: '#/components/schemas/ArrivalAndDeparture'
+    ArrivalAndDeparture:
+      type: object
+      properties:
+        routeId:
+          type: string
+        tripId:
+          type: string
+        serviceDate:
+          type: integer
+          format: int64
+        vehicleId:
+          type: string
+        stopId:
+          type: string
+        stopSequence:
+          type: integer
+        scheduledArrivalTime:
+          type: integer
+          format: int64
+        scheduledDepartureTime:
+          type: integer
+          format: int64
+        predictedArrivalTime:
+          type: integer
+          format: int64
+        predictedDepartureTime:
+          type: integer
+          format: int64
+        predicted:
+          type: boolean
+        status:
+          type: string
+        routeShortName:
+          type: string
+        tripHeadsign:
+          type: string
+    ArrivalsAndDeparturesResponse:
+      allOf:
+      - $ref: '#/components/schemas/BaseResponse'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              entry:
+                type: object
+                properties:
+                  arrivalsAndDepartures:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ArrivalAndDeparture'
+    BaseResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: HTTP status code
+        currentTime:
+          type: integer
+          format: int64
+          description: Current server time in milliseconds
+        text:
+          type: string
+          description: Human-readable status message
+        version:
+          type: integer
+          description: API version
+  parameters:
+    ApiKey:
+      name: key
+      in: query
+      required: true
+      description: API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)
+      schema:
+        type: string

@@ -1,0 +1,216 @@
+openapi: 3.0.0
+info:
+  title: Sound Transit OneBusAway Agencies Routes API
+  description: The Sound Transit OneBusAway API provides access to real-time and scheduled transit data for the Puget Sound region including routes, stops, arrivals, departures, and vehicle positions. Supports real-time data for the 1 Line, 2 Line, T Line, and ST Express bus routes.
+  version: '2.0'
+  contact:
+    name: Sound Transit Open Transit Data
+    email: open_transit_data@soundtransit.org
+    url: https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd
+  license:
+    name: Open Data
+    url: https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd/transit-data-terms-use
+servers:
+- url: https://api.pugetsound.onebusaway.org/api/where
+  description: Puget Sound OneBusAway API
+tags:
+- name: Routes
+  description: Route definitions and schedules
+paths:
+  /route/{id}.json:
+    get:
+      operationId: getRoute
+      summary: Get Route
+      description: Retrieve details for a specific transit route.
+      tags:
+      - Routes
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique route identifier
+        schema:
+          type: string
+      - $ref: '#/components/parameters/ApiKey'
+      responses:
+        '200':
+          description: Route details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RouteResponse'
+        '404':
+          description: Route not found
+  /routes-for-agency/{id}.json:
+    get:
+      operationId: listRoutesForAgency
+      summary: List Routes For Agency
+      description: List all transit routes for a specific agency.
+      tags:
+      - Routes
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Agency identifier
+        schema:
+          type: string
+      - $ref: '#/components/parameters/ApiKey'
+      responses:
+        '200':
+          description: List of routes for the agency
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoutesResponse'
+  /routes-for-location.json:
+    get:
+      operationId: listRoutesForLocation
+      summary: List Routes For Location
+      description: Search for transit routes near a geographic location.
+      tags:
+      - Routes
+      parameters:
+      - name: lat
+        in: query
+        required: true
+        description: Latitude of the search location
+        schema:
+          type: number
+          format: float
+      - name: lon
+        in: query
+        required: true
+        description: Longitude of the search location
+        schema:
+          type: number
+          format: float
+      - name: radius
+        in: query
+        required: false
+        description: Search radius in meters
+        schema:
+          type: integer
+      - name: query
+        in: query
+        required: false
+        description: Route name search query
+        schema:
+          type: string
+      - $ref: '#/components/parameters/ApiKey'
+      responses:
+        '200':
+          description: List of routes near the location
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoutesResponse'
+  /shape/{id}.json:
+    get:
+      operationId: getShape
+      summary: Get Shape
+      description: Get polyline shape details for a route or trip.
+      tags:
+      - Routes
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Shape identifier
+        schema:
+          type: string
+      - $ref: '#/components/parameters/ApiKey'
+      responses:
+        '200':
+          description: Shape polyline data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShapeResponse'
+components:
+  parameters:
+    ApiKey:
+      name: key
+      in: query
+      required: true
+      description: API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)
+      schema:
+        type: string
+  schemas:
+    RoutesResponse:
+      allOf:
+      - $ref: '#/components/schemas/BaseResponse'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              list:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Route'
+    RouteResponse:
+      allOf:
+      - $ref: '#/components/schemas/BaseResponse'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              entry:
+                $ref: '#/components/schemas/Route'
+    Route:
+      type: object
+      properties:
+        id:
+          type: string
+        agencyId:
+          type: string
+        shortName:
+          type: string
+        longName:
+          type: string
+        description:
+          type: string
+        type:
+          type: integer
+          description: GTFS route type
+        url:
+          type: string
+          format: uri
+        color:
+          type: string
+        textColor:
+          type: string
+    ShapeResponse:
+      allOf:
+      - $ref: '#/components/schemas/BaseResponse'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              entry:
+                type: object
+                properties:
+                  points:
+                    type: string
+                    description: Encoded polyline string
+                  length:
+                    type: integer
+    BaseResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: HTTP status code
+        currentTime:
+          type: integer
+          format: int64
+          description: Current server time in milliseconds
+        text:
+          type: string
+          description: Human-readable status message
+        version:
+          type: integer
+          description: API version

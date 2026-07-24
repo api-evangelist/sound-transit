@@ -1,0 +1,147 @@
+openapi: 3.0.0
+info:
+  title: Sound Transit OneBusAway Agencies API
+  description: The Sound Transit OneBusAway API provides access to real-time and scheduled transit data for the Puget Sound region including routes, stops, arrivals, departures, and vehicle positions. Supports real-time data for the 1 Line, 2 Line, T Line, and ST Express bus routes.
+  version: '2.0'
+  contact:
+    name: Sound Transit Open Transit Data
+    email: open_transit_data@soundtransit.org
+    url: https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd
+  license:
+    name: Open Data
+    url: https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd/transit-data-terms-use
+servers:
+- url: https://api.pugetsound.onebusaway.org/api/where
+  description: Puget Sound OneBusAway API
+tags:
+- name: Agencies
+  description: Transit agency information and coverage
+paths:
+  /agencies-with-coverage.json:
+    get:
+      operationId: listAgenciesWithCoverage
+      summary: List Agencies With Coverage
+      description: List all supported transit agencies along with their geographic coverage areas.
+      tags:
+      - Agencies
+      parameters:
+      - $ref: '#/components/parameters/ApiKey'
+      responses:
+        '200':
+          description: List of agencies with coverage areas
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgenciesResponse'
+        '401':
+          description: Unauthorized - invalid API key
+  /agency/{id}.json:
+    get:
+      operationId: getAgency
+      summary: Get Agency
+      description: Retrieve details for a specific transit agency.
+      tags:
+      - Agencies
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique agency identifier
+        schema:
+          type: string
+      - $ref: '#/components/parameters/ApiKey'
+      responses:
+        '200':
+          description: Agency details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgencyResponse'
+        '404':
+          description: Agency not found
+components:
+  schemas:
+    BaseResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: HTTP status code
+        currentTime:
+          type: integer
+          format: int64
+          description: Current server time in milliseconds
+        text:
+          type: string
+          description: Human-readable status message
+        version:
+          type: integer
+          description: API version
+    AgencyResponse:
+      allOf:
+      - $ref: '#/components/schemas/BaseResponse'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              entry:
+                $ref: '#/components/schemas/Agency'
+    AgenciesResponse:
+      allOf:
+      - $ref: '#/components/schemas/BaseResponse'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              list:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AgencyWithCoverage'
+              references:
+                type: object
+    AgencyWithCoverage:
+      type: object
+      properties:
+        agencyId:
+          type: string
+        lat:
+          type: number
+          format: float
+        lon:
+          type: number
+          format: float
+        latSpan:
+          type: number
+          format: float
+        lonSpan:
+          type: number
+          format: float
+    Agency:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        url:
+          type: string
+          format: uri
+        timezone:
+          type: string
+        lang:
+          type: string
+        phone:
+          type: string
+        fareUrl:
+          type: string
+          format: uri
+  parameters:
+    ApiKey:
+      name: key
+      in: query
+      required: true
+      description: API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)
+      schema:
+        type: string

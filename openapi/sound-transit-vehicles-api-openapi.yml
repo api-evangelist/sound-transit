@@ -1,0 +1,149 @@
+openapi: 3.0.0
+info:
+  title: Sound Transit OneBusAway Agencies Vehicles API
+  description: The Sound Transit OneBusAway API provides access to real-time and scheduled transit data for the Puget Sound region including routes, stops, arrivals, departures, and vehicle positions. Supports real-time data for the 1 Line, 2 Line, T Line, and ST Express bus routes.
+  version: '2.0'
+  contact:
+    name: Sound Transit Open Transit Data
+    email: open_transit_data@soundtransit.org
+    url: https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd
+  license:
+    name: Open Data
+    url: https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd/transit-data-terms-use
+servers:
+- url: https://api.pugetsound.onebusaway.org/api/where
+  description: Puget Sound OneBusAway API
+tags:
+- name: Vehicles
+  description: Active vehicle locations and assignments
+paths:
+  /trip-for-vehicle/{id}.json:
+    get:
+      operationId: getTripForVehicle
+      summary: Get Trip For Vehicle
+      description: Get the current trip details for a specific vehicle.
+      tags:
+      - Vehicles
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Vehicle identifier
+        schema:
+          type: string
+      - $ref: '#/components/parameters/ApiKey'
+      responses:
+        '200':
+          description: Trip details for the vehicle
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TripDetailsResponse'
+  /vehicles-for-agency/{id}.json:
+    get:
+      operationId: listVehiclesForAgency
+      summary: List Vehicles For Agency
+      description: Get all currently active vehicles for a transit agency.
+      tags:
+      - Vehicles
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Agency identifier
+        schema:
+          type: string
+      - $ref: '#/components/parameters/ApiKey'
+      responses:
+        '200':
+          description: Active vehicles for the agency
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VehiclesResponse'
+components:
+  parameters:
+    ApiKey:
+      name: key
+      in: query
+      required: true
+      description: API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)
+      schema:
+        type: string
+  schemas:
+    VehicleStatus:
+      type: object
+      properties:
+        vehicleId:
+          type: string
+        lastUpdateTime:
+          type: integer
+          format: int64
+        lastLocationUpdateTime:
+          type: integer
+          format: int64
+        location:
+          type: object
+          properties:
+            lat:
+              type: number
+              format: float
+            lon:
+              type: number
+              format: float
+        tripId:
+          type: string
+        tripStatus:
+          type: string
+        phase:
+          type: string
+    VehiclesResponse:
+      allOf:
+      - $ref: '#/components/schemas/BaseResponse'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              list:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VehicleStatus'
+    TripDetailsResponse:
+      allOf:
+      - $ref: '#/components/schemas/BaseResponse'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              entry:
+                type: object
+                properties:
+                  tripId:
+                    type: string
+                  serviceDate:
+                    type: integer
+                    format: int64
+                  status:
+                    type: object
+                  stopTimes:
+                    type: array
+                    items:
+                      type: object
+    BaseResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: HTTP status code
+        currentTime:
+          type: integer
+          format: int64
+          description: Current server time in milliseconds
+        text:
+          type: string
+          description: Human-readable status message
+        version:
+          type: integer
+          description: API version
