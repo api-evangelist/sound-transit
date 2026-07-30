@@ -6,9 +6,21 @@ description: >-
   static and real-time data feeds, OneBusAway API access, and GTFS-RT service alerts for transit application developers
   and researchers.
 type: Index
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/sound-transit.png
 tags:
   - Transit
   - Transportation
@@ -22,35 +34,125 @@ modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/sound-transit/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
-  - aid: sound-transit:sound-transit-onebusaway-api
-    name: Sound Transit OneBusAway API
-    description: >-
-      The Sound Transit OneBusAway API provides access to real-time and scheduled transit data for the Puget Sound
-      region. Supports route information, stop locations, real-time arrivals and departures, vehicle positions, and trip
-      details for 1 Line, 2 Line, T Line, and ST Express routes.
-    humanURL: https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd
-    baseURL: https://api.pugetsound.onebusaway.org/api/where
-    tags:
-      - Transit
-      - GTFS
-      - Real-Time
-      - Routes
-      - Stops
-      - Vehicles
-    properties:
-      - type: Documentation
-        url: https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd
-      - type: Reference
-        url: http://developer.onebusaway.org/
-      - type: GTFS Downloads
-        url: https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd/otd-downloads
-      - type: OpenAPI
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/sound-transit/refs/heads/main/openapi/sound-transit-onebusaway-openapi.yml
-    contact:
-      - FN: Sound Transit Open Transit Data
-        url: https://www.soundtransit.org/
-        email: open_transit_data@soundtransit.org
+- aid: sound-transit:sound-transit-agencies-api
+  name: Sound Transit Agencies API
+  description: Transit agency information and coverage
+  humanURL: https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd
+  baseURL: https://api.pugetsound.onebusaway.org/api/where
+  tags:
+  - Agencies
+  properties:
+  - type: OpenAPI
+    url: openapi/sound-transit-agencies-api-openapi.yml
+  - type: Documentation
+    url: https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd
+  - type: Reference
+    url: http://developer.onebusaway.org/
+  - type: GTFS Downloads
+    url: >-
+      https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd/otd-downloads
+- aid: sound-transit:sound-transit-arrivals-and-departures-api
+  name: Sound Transit Arrivals And Departures API
+  description: Real-time and scheduled arrival/departure information
+  humanURL: https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd
+  baseURL: https://api.pugetsound.onebusaway.org/api/where
+  tags:
+  - Arrivals And Departures
+  properties:
+  - type: OpenAPI
+    url: openapi/sound-transit-arrivals-and-departures-api-openapi.yml
+  - type: Documentation
+    url: https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd
+  - type: Reference
+    url: http://developer.onebusaway.org/
+  - type: GTFS Downloads
+    url: >-
+      https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd/otd-downloads
+- aid: sound-transit:sound-transit-routes-api
+  name: Sound Transit Routes API
+  description: Route definitions and schedules
+  humanURL: https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd
+  baseURL: https://api.pugetsound.onebusaway.org/api/where
+  tags:
+  - Routes
+  properties:
+  - type: OpenAPI
+    url: openapi/sound-transit-routes-api-openapi.yml
+  - type: Documentation
+    url: https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd
+  - type: Reference
+    url: http://developer.onebusaway.org/
+  - type: GTFS Downloads
+    url: >-
+      https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd/otd-downloads
+- aid: sound-transit:sound-transit-stops-api
+  name: Sound Transit Stops API
+  description: Stop locations and schedules
+  humanURL: https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd
+  baseURL: https://api.pugetsound.onebusaway.org/api/where
+  tags:
+  - Stops
+  properties:
+  - type: OpenAPI
+    url: openapi/sound-transit-stops-api-openapi.yml
+  - type: Documentation
+    url: https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd
+  - type: Reference
+    url: http://developer.onebusaway.org/
+  - type: GTFS Downloads
+    url: >-
+      https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd/otd-downloads
+- aid: sound-transit:sound-transit-system-api
+  name: Sound Transit System API
+  description: System utilities and configuration
+  humanURL: https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd
+  baseURL: https://api.pugetsound.onebusaway.org/api/where
+  tags:
+  - System
+  properties:
+  - type: OpenAPI
+    url: openapi/sound-transit-system-api-openapi.yml
+  - type: Documentation
+    url: https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd
+  - type: Reference
+    url: http://developer.onebusaway.org/
+  - type: GTFS Downloads
+    url: >-
+      https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd/otd-downloads
+- aid: sound-transit:sound-transit-trips-api
+  name: Sound Transit Trips API
+  description: Trip details and active vehicle positions
+  humanURL: https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd
+  baseURL: https://api.pugetsound.onebusaway.org/api/where
+  tags:
+  - Trips
+  properties:
+  - type: OpenAPI
+    url: openapi/sound-transit-trips-api-openapi.yml
+  - type: Documentation
+    url: https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd
+  - type: Reference
+    url: http://developer.onebusaway.org/
+  - type: GTFS Downloads
+    url: >-
+      https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd/otd-downloads
+- aid: sound-transit:sound-transit-vehicles-api
+  name: Sound Transit Vehicles API
+  description: Active vehicle locations and assignments
+  humanURL: https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd
+  baseURL: https://api.pugetsound.onebusaway.org/api/where
+  tags:
+  - Vehicles
+  properties:
+  - type: OpenAPI
+    url: openapi/sound-transit-vehicles-api-openapi.yml
+  - type: Documentation
+    url: https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd
+  - type: Reference
+    url: http://developer.onebusaway.org/
+  - type: GTFS Downloads
+    url: >-
+      https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd/otd-downloads
 common:
   - type: AgenticAccess
     url: agentic-access/sound-transit-agentic-access.yml
