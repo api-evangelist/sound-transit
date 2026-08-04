@@ -1,0 +1,26 @@
+{
+  "provider": "sound-transit",
+  "sources": [
+    "sound-transit-agencies-api-openapi.yml",
+    "sound-transit-arrivals-and-departures-api-openapi.yml",
+    "sound-transit-routes-api-openapi.yml",
+    "sound-transit-stops-api-openapi.yml",
+    "sound-transit-system-api-openapi.yml",
+    "sound-transit-trips-api-openapi.yml",
+    "sound-transit-vehicles-api-openapi.yml"
+  ],
+  "outputs": [
+    "sound-transit-agencies-api-openapi.yml",
+    "sound-transit-arrivals-and-departures-api-openapi.yml",
+    "sound-transit-routes-api-openapi.yml",
+    "sound-transit-stops-api-openapi.yml",
+    "sound-transit-system-api-openapi.yml",
+    "sound-transit-trips-api-openapi.yml",
+    "sound-transit-vehicles-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
