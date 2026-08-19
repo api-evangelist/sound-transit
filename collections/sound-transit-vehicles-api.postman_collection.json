@@ -1,0 +1,210 @@
+{
+  "item": [
+    {
+      "id": "ea70456d-d4ec-4fa0-9de6-87ee038efdfb",
+      "name": "Vehicles",
+      "description": {
+        "content": "Active vehicle locations and assignments",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "59a9022a-b9c5-4600-8170-0b7e01e451ca",
+          "name": "Get Trip For Vehicle",
+          "request": {
+            "name": "Get Trip For Vehicle",
+            "description": {
+              "content": "Get the current trip details for a specific vehicle.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "trip-for-vehicle",
+                "{{id}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5f28ab76-9a2b-42a8-be58-01c03a1fd9fc",
+              "name": "Trip details for the vehicle",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trip-for-vehicle",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 3066,\n  \"currentTime\": 9106,\n  \"text\": \"string\",\n  \"version\": 3790,\n  \"data\": {\n    \"entry\": {\n      \"tripId\": \"string\",\n      \"serviceDate\": 4596,\n      \"status\": {}\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c3125362-d10e-40f1-ac37-aacf05824980",
+          "name": "List Vehicles For Agency",
+          "request": {
+            "name": "List Vehicles For Agency",
+            "description": {
+              "content": "Get all currently active vehicles for a transit agency.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vehicles-for-agency",
+                "{{id}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6b703fc9-c301-4a11-97ab-fa62b47ff3df",
+              "name": "Active vehicles for the agency",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicles-for-agency",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1660,\n  \"currentTime\": 3326,\n  \"text\": \"string\",\n  \"version\": 8810,\n  \"data\": {\n    \"list\": [\n      {\n        \"vehicleId\": \"string\",\n        \"lastUpdateTime\": 6678,\n        \"lastLocationUpdateTime\": 542,\n        \"location\": {\n          \"lat\": 7142.226446866687,\n          \"lon\": 6336.995082111395\n        },\n        \"tripId\": \"string\",\n        \"tripStatus\": \"string\",\n        \"phase\": \"string\"\n      },\n      {\n        \"vehicleId\": \"string\",\n        \"lastUpdateTime\": 9553,\n        \"lastLocationUpdateTime\": 8426,\n        \"location\": {\n          \"lat\": 3483.3247604850894,\n          \"lon\": 8436.257665560546\n        },\n        \"tripId\": \"string\",\n        \"tripStatus\": \"string\",\n        \"phase\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pugetsound.onebusaway.org/api/where",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) Vehicle identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "id"
+    }
+  ],
+  "info": {
+    "_postman_id": "94cedda5-e02b-4424-879e-df8827e1649c",
+    "name": "Sound Transit OneBusAway Agencies Vehicles API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Sound Transit OneBusAway API provides access to real-time and scheduled transit data for the Puget Sound region including routes, stops, arrivals, departures, and vehicle positions. Supports real-time data for the 1 Line, 2 Line, T Line, and ST Express bus routes.\n\nContact Support:\n Name: Sound Transit Open Transit Data\n Email: open_transit_data@soundtransit.org",
+      "type": "text/plain"
+    }
+  }
+}

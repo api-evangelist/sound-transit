@@ -1,0 +1,196 @@
+{
+  "item": [
+    {
+      "id": "14068864-a24c-42bd-afb0-c610ae1ac79f",
+      "name": "System",
+      "description": {
+        "content": "System utilities and configuration",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3924b492-b257-45e3-8bb2-2e14698d2d95",
+          "name": "Get Current Time",
+          "request": {
+            "name": "Get Current Time",
+            "description": {
+              "content": "Retrieve the current server time.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "current-time.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e69ae1f6-27ff-426c-83d5-a8488ca91665",
+              "name": "Current server time",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "current-time.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5242,\n  \"currentTime\": 5450,\n  \"text\": \"string\",\n  \"version\": 593,\n  \"data\": {\n    \"entry\": {\n      \"time\": 6061,\n      \"readableTime\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5fc471ae-8f9a-4997-a530-37fc279d5ef2",
+          "name": "Get Server Configuration",
+          "request": {
+            "name": "Get Server Configuration",
+            "description": {
+              "content": "Get server deployment configuration details.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "config.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "34ea65f0-1f38-48ab-9a96-27c6801ad71c",
+              "name": "Server configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "config.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 3344,\n  \"currentTime\": 9779,\n  \"text\": \"string\",\n  \"version\": 6302,\n  \"data\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pugetsound.onebusaway.org/api/where",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "cb7005ce-4627-4fc1-9d27-296064a5971c",
+    "name": "Sound Transit OneBusAway Agencies System API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Sound Transit OneBusAway API provides access to real-time and scheduled transit data for the Puget Sound region including routes, stops, arrivals, departures, and vehicle positions. Supports real-time data for the 1 Line, 2 Line, T Line, and ST Express bus routes.\n\nContact Support:\n Name: Sound Transit Open Transit Data\n Email: open_transit_data@soundtransit.org",
+      "type": "text/plain"
+    }
+  }
+}

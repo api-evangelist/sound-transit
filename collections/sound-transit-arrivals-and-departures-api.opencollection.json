@@ -1,0 +1,104 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sound Transit OneBusAway Agencies Arrivals And Departures API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Arrivals And Departures",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Arrivals And Departures For Stop",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pugetsound.onebusaway.org/api/where/arrivals-and-departures-for-stop/:id.json",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Stop identifier"
+              },
+              {
+                "name": "minutesBefore",
+                "value": "",
+                "type": "query",
+                "description": "How many minutes before now to include arrivals/departures"
+              },
+              {
+                "name": "minutesAfter",
+                "value": "",
+                "type": "query",
+                "description": "How many minutes after now to include arrivals/departures"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+              }
+            ]
+          },
+          "docs": "Get current real-time arrivals and departures for a transit stop."
+        },
+        {
+          "info": {
+            "name": "Get Arrival And Departure For Stop",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pugetsound.onebusaway.org/api/where/arrival-and-departure-for-stop/:id.json",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Stop identifier"
+              },
+              {
+                "name": "tripId",
+                "value": "",
+                "type": "query",
+                "description": "Trip identifier"
+              },
+              {
+                "name": "serviceDate",
+                "value": "",
+                "type": "query",
+                "description": "Service date in milliseconds since Unix epoch"
+              },
+              {
+                "name": "vehicleId",
+                "value": "",
+                "type": "query",
+                "description": "Vehicle identifier"
+              },
+              {
+                "name": "stopSequence",
+                "value": "",
+                "type": "query",
+                "description": "Stop sequence number within the trip"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+              }
+            ]
+          },
+          "docs": "Get details for a specific arrival or departure at a stop."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

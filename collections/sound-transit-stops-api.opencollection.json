@@ -1,0 +1,142 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sound Transit OneBusAway Agencies Stops API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Stops",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Stop",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pugetsound.onebusaway.org/api/where/stop/:id.json",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique stop identifier"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific transit stop."
+        },
+        {
+          "info": {
+            "name": "List Stops For Location",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pugetsound.onebusaway.org/api/where/stops-for-location.json",
+            "params": [
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude of the search location"
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Longitude of the search location"
+              },
+              {
+                "name": "radius",
+                "value": "",
+                "type": "query",
+                "description": "Search radius in meters (default 500)"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Stop code or name search query"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+              }
+            ]
+          },
+          "docs": "Search for transit stops near a geographic location."
+        },
+        {
+          "info": {
+            "name": "List Stops For Route",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pugetsound.onebusaway.org/api/where/stops-for-route/:id.json",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Route identifier"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+              }
+            ]
+          },
+          "docs": "Get all stops and travel paths for a specific route."
+        },
+        {
+          "info": {
+            "name": "Get Schedule For Stop",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pugetsound.onebusaway.org/api/where/schedule-for-stop/:id.json",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Stop identifier"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "Service date in YYYY-MM-DD format (default today)"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+              }
+            ]
+          },
+          "docs": "Get the full schedule for a stop on a particular day."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sound Transit OneBusAway Agencies System API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "System",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Current Time",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pugetsound.onebusaway.org/api/where/current-time.json",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+              }
+            ]
+          },
+          "docs": "Retrieve the current server time."
+        },
+        {
+          "info": {
+            "name": "Get Server Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pugetsound.onebusaway.org/api/where/config.json",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+              }
+            ]
+          },
+          "docs": "Get server deployment configuration details."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

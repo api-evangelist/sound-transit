@@ -1,0 +1,136 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sound Transit OneBusAway Agencies Routes API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Routes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Route",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pugetsound.onebusaway.org/api/where/route/:id.json",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique route identifier"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific transit route."
+        },
+        {
+          "info": {
+            "name": "List Routes For Agency",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pugetsound.onebusaway.org/api/where/routes-for-agency/:id.json",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Agency identifier"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+              }
+            ]
+          },
+          "docs": "List all transit routes for a specific agency."
+        },
+        {
+          "info": {
+            "name": "List Routes For Location",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pugetsound.onebusaway.org/api/where/routes-for-location.json",
+            "params": [
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude of the search location"
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Longitude of the search location"
+              },
+              {
+                "name": "radius",
+                "value": "",
+                "type": "query",
+                "description": "Search radius in meters"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Route name search query"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+              }
+            ]
+          },
+          "docs": "Search for transit routes near a geographic location."
+        },
+        {
+          "info": {
+            "name": "Get Shape",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pugetsound.onebusaway.org/api/where/shape/:id.json",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Shape identifier"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+              }
+            ]
+          },
+          "docs": "Get polyline shape details for a route or trip."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

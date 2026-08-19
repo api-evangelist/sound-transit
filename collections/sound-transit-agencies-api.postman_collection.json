@@ -1,0 +1,277 @@
+{
+  "item": [
+    {
+      "id": "862d745c-65ed-4127-8e3d-8ecc3a71dde4",
+      "name": "Agencies",
+      "description": {
+        "content": "Transit agency information and coverage",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6b879101-8680-4ff5-b188-737ab1eb9a96",
+          "name": "List Agencies With Coverage",
+          "request": {
+            "name": "List Agencies With Coverage",
+            "description": {
+              "content": "List all supported transit agencies along with their geographic coverage areas.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agencies-with-coverage.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "60d51880-625c-4da1-87c2-d972928f42f3",
+              "name": "List of agencies with coverage areas",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agencies-with-coverage.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5956,\n  \"currentTime\": 9037,\n  \"text\": \"string\",\n  \"version\": 3282,\n  \"data\": {\n    \"list\": [\n      {\n        \"agencyId\": \"string\",\n        \"lat\": 6509.69166869936,\n        \"lon\": 6153.375556201964,\n        \"latSpan\": 2167.690632980792,\n        \"lonSpan\": 7605.360773516974\n      },\n      {\n        \"agencyId\": \"string\",\n        \"lat\": 7754.6443137885635,\n        \"lon\": 8949.257209136753,\n        \"latSpan\": 2151.1438824325146,\n        \"lonSpan\": 430.72037470325506\n      }\n    ],\n    \"references\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0c207e27-5c82-47d7-ac1e-5fcd1c59d236",
+              "name": "Unauthorized - invalid API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agencies-with-coverage.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cfd8d6a5-5772-449d-8b9f-20a6a86f1050",
+          "name": "Get Agency",
+          "request": {
+            "name": "Get Agency",
+            "description": {
+              "content": "Retrieve details for a specific transit agency.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agency",
+                "{{id}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9ee38d7a-2251-4546-8f0c-150b4028ff7a",
+              "name": "Agency details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agency",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 333,\n  \"currentTime\": 7934,\n  \"text\": \"string\",\n  \"version\": 3663,\n  \"data\": {\n    \"entry\": {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"url\": \"http://PY.pektmjSeOQ\",\n      \"timezone\": \"string\",\n      \"lang\": \"string\",\n      \"phone\": \"string\",\n      \"fareUrl\": \"http://sMwGSmTMgrhxBsodwfu.xhphyU0hEgVuQHWi,UsCPsSAHYX4wqD20k89Y-FhfI7Pnbo9eWmo\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bb03702e-1ad1-41c1-a45d-34efa0507b44",
+              "name": "Agency not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agency",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pugetsound.onebusaway.org/api/where",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) Unique agency identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "id"
+    }
+  ],
+  "info": {
+    "_postman_id": "9eccd7d7-be08-42bd-a7fe-244a40b37492",
+    "name": "Sound Transit OneBusAway Agencies API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Sound Transit OneBusAway API provides access to real-time and scheduled transit data for the Puget Sound region including routes, stops, arrivals, departures, and vehicle positions. Supports real-time data for the 1 Line, 2 Line, T Line, and ST Express bus routes.\n\nContact Support:\n Name: Sound Transit Open Transit Data\n Email: open_transit_data@soundtransit.org",
+      "type": "text/plain"
+    }
+  }
+}

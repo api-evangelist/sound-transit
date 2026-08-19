@@ -1,0 +1,270 @@
+{
+  "item": [
+    {
+      "id": "746eb97c-f296-4857-bf69-5ad0b5044f86",
+      "name": "Arrivals And Departures",
+      "description": {
+        "content": "Real-time and scheduled arrival/departure information",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "be8409e0-d822-451f-9104-8aaa3c936123",
+          "name": "Get Arrivals And Departures For Stop",
+          "request": {
+            "name": "Get Arrivals And Departures For Stop",
+            "description": {
+              "content": "Get current real-time arrivals and departures for a transit stop.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "arrivals-and-departures-for-stop",
+                "{{id}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "minutesBefore",
+                  "value": "5",
+                  "description": "How many minutes before now to include arrivals/departures"
+                },
+                {
+                  "disabled": false,
+                  "key": "minutesAfter",
+                  "value": "35",
+                  "description": "How many minutes after now to include arrivals/departures"
+                },
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a5ddc3f9-b5cc-4616-84fc-3690d1be0a7b",
+              "name": "Real-time arrivals and departures",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "arrivals-and-departures-for-stop",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "minutesBefore",
+                      "value": "5"
+                    },
+                    {
+                      "key": "minutesAfter",
+                      "value": "35"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7598,\n  \"currentTime\": 280,\n  \"text\": \"string\",\n  \"version\": 8439,\n  \"data\": {\n    \"entry\": {\n      \"arrivalsAndDepartures\": [\n        {\n          \"routeId\": \"string\",\n          \"tripId\": \"string\",\n          \"serviceDate\": 6272,\n          \"vehicleId\": \"string\",\n          \"stopId\": \"string\",\n          \"stopSequence\": 1884,\n          \"scheduledArrivalTime\": 5626,\n          \"scheduledDepartureTime\": 3723,\n          \"predictedArrivalTime\": 1746,\n          \"predictedDepartureTime\": 4960,\n          \"predicted\": false,\n          \"status\": \"string\",\n          \"routeShortName\": \"string\",\n          \"tripHeadsign\": \"string\"\n        },\n        {\n          \"routeId\": \"string\",\n          \"tripId\": \"string\",\n          \"serviceDate\": 712,\n          \"vehicleId\": \"string\",\n          \"stopId\": \"string\",\n          \"stopSequence\": 786,\n          \"scheduledArrivalTime\": 7205,\n          \"scheduledDepartureTime\": 1873,\n          \"predictedArrivalTime\": 8373,\n          \"predictedDepartureTime\": 5074,\n          \"predicted\": true,\n          \"status\": \"string\",\n          \"routeShortName\": \"string\",\n          \"tripHeadsign\": \"string\"\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "511eaf04-0905-4894-8c26-0880e7ebdc15",
+          "name": "Get Arrival And Departure For Stop",
+          "request": {
+            "name": "Get Arrival And Departure For Stop",
+            "description": {
+              "content": "Get details for a specific arrival or departure at a stop.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "arrival-and-departure-for-stop",
+                "{{id}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "tripId",
+                  "value": "<string>",
+                  "description": "(Required) Trip identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "serviceDate",
+                  "value": "<long>",
+                  "description": "(Required) Service date in milliseconds since Unix epoch"
+                },
+                {
+                  "disabled": false,
+                  "key": "vehicleId",
+                  "value": "<string>",
+                  "description": "Vehicle identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "stopSequence",
+                  "value": "<integer>",
+                  "description": "Stop sequence number within the trip"
+                },
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6b87fd13-57e4-422c-b2a8-50f731c43ea4",
+              "name": "Arrival/departure details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "arrival-and-departure-for-stop",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tripId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "serviceDate",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "vehicleId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "stopSequence",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2333,\n  \"currentTime\": 2267,\n  \"text\": \"string\",\n  \"version\": 3559,\n  \"data\": {\n    \"entry\": {\n      \"routeId\": \"string\",\n      \"tripId\": \"string\",\n      \"serviceDate\": 356,\n      \"vehicleId\": \"string\",\n      \"stopId\": \"string\",\n      \"stopSequence\": 488,\n      \"scheduledArrivalTime\": 3864,\n      \"scheduledDepartureTime\": 6640,\n      \"predictedArrivalTime\": 7873,\n      \"predictedDepartureTime\": 5419,\n      \"predicted\": true,\n      \"status\": \"string\",\n      \"routeShortName\": \"string\",\n      \"tripHeadsign\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pugetsound.onebusaway.org/api/where",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) Stop identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "id"
+    }
+  ],
+  "info": {
+    "_postman_id": "cc49e463-07c1-49b4-8e25-b133fc1187ce",
+    "name": "Sound Transit OneBusAway Agencies Arrivals And Departures API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Sound Transit OneBusAway API provides access to real-time and scheduled transit data for the Puget Sound region including routes, stops, arrivals, departures, and vehicle positions. Supports real-time data for the 1 Line, 2 Line, T Line, and ST Express bus routes.\n\nContact Support:\n Name: Sound Transit Open Transit Data\n Email: open_transit_data@soundtransit.org",
+      "type": "text/plain"
+    }
+  }
+}

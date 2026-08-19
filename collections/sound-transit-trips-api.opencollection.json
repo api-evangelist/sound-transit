@@ -1,0 +1,146 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sound Transit OneBusAway Agencies Trips API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Trips",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Trip",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pugetsound.onebusaway.org/api/where/trip/:id.json",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Trip identifier"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific transit trip."
+        },
+        {
+          "info": {
+            "name": "Get Trip Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pugetsound.onebusaway.org/api/where/trip-details/:id.json",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Trip identifier"
+              },
+              {
+                "name": "serviceDate",
+                "value": "",
+                "type": "query",
+                "description": "Service date in milliseconds since Unix epoch"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+              }
+            ]
+          },
+          "docs": "Get extended details for a trip including stop times and schedule deviation."
+        },
+        {
+          "info": {
+            "name": "List Trips For Route",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pugetsound.onebusaway.org/api/where/trips-for-route/:id.json",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Route identifier"
+              },
+              {
+                "name": "includeStatus",
+                "value": "",
+                "type": "query",
+                "description": "Include real-time status information"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+              }
+            ]
+          },
+          "docs": "Get all currently active trips for a specific route."
+        },
+        {
+          "info": {
+            "name": "List Trips For Location",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pugetsound.onebusaway.org/api/where/trips-for-location.json",
+            "params": [
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "latSpan",
+                "value": "",
+                "type": "query",
+                "description": "Latitude span for the bounding box"
+              },
+              {
+                "name": "lonSpan",
+                "value": "",
+                "type": "query",
+                "description": "Longitude span for the bounding box"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+              }
+            ]
+          },
+          "docs": "Get all active trips near a geographic location."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

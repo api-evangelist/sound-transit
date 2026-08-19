@@ -1,0 +1,451 @@
+{
+  "item": [
+    {
+      "id": "63614d72-8cdf-466c-96af-c6d8983bdbd3",
+      "name": "Routes",
+      "description": {
+        "content": "Route definitions and schedules",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3020b019-6649-40a8-ab91-c263715098c4",
+          "name": "Get Route",
+          "request": {
+            "name": "Get Route",
+            "description": {
+              "content": "Retrieve details for a specific transit route.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "route",
+                "{{id}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "70896a56-0023-477f-b9d6-93e2aa67b188",
+              "name": "Route details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "route",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9725,\n  \"currentTime\": 410,\n  \"text\": \"string\",\n  \"version\": 6372,\n  \"data\": {\n    \"entry\": {\n      \"id\": \"string\",\n      \"agencyId\": \"string\",\n      \"shortName\": \"string\",\n      \"longName\": \"string\",\n      \"description\": \"string\",\n      \"type\": 2200,\n      \"url\": \"http://eNXnnQV.dktp4jgUbPXRKVqXCQO2LmKfFZasu2zuViN4-XOHPM\",\n      \"color\": \"string\",\n      \"textColor\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "259009b1-e4e3-4268-9ef9-3d34d83710e9",
+              "name": "Route not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "route",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d2df438f-e6da-4f5e-8ec6-7642caa482bb",
+          "name": "List Routes For Agency",
+          "request": {
+            "name": "List Routes For Agency",
+            "description": {
+              "content": "List all transit routes for a specific agency.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "routes-for-agency",
+                "{{id}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "576a1c0e-f771-4980-a9c5-51e3ee05164a",
+              "name": "List of routes for the agency",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "routes-for-agency",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2792,\n  \"currentTime\": 8777,\n  \"text\": \"string\",\n  \"version\": 8228,\n  \"data\": {\n    \"list\": [\n      {\n        \"id\": \"string\",\n        \"agencyId\": \"string\",\n        \"shortName\": \"string\",\n        \"longName\": \"string\",\n        \"description\": \"string\",\n        \"type\": 1766,\n        \"url\": \"http://pISDXbG.rolvOKWQb\",\n        \"color\": \"string\",\n        \"textColor\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"agencyId\": \"string\",\n        \"shortName\": \"string\",\n        \"longName\": \"string\",\n        \"description\": \"string\",\n        \"type\": 3403,\n        \"url\": \"https://MqMUjbgYZWhDY.bsf.usI8XKM1fw2NUxu6Wx,GUXibxl7gNtSBLs+tZNBuQ,b-8zzAuZq\",\n        \"color\": \"string\",\n        \"textColor\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ec7de40e-3aa5-4576-b27f-ee22f3d6cc64",
+          "name": "List Routes For Location",
+          "request": {
+            "name": "List Routes For Location",
+            "description": {
+              "content": "Search for transit routes near a geographic location.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "routes-for-location.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<float>",
+                  "description": "(Required) Latitude of the search location"
+                },
+                {
+                  "disabled": false,
+                  "key": "lon",
+                  "value": "<float>",
+                  "description": "(Required) Longitude of the search location"
+                },
+                {
+                  "disabled": false,
+                  "key": "radius",
+                  "value": "<integer>",
+                  "description": "Search radius in meters"
+                },
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "Route name search query"
+                },
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "363c14cf-b66c-4d87-b08c-ddf0fa1fba3e",
+              "name": "List of routes near the location",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "routes-for-location.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "radius",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 4979,\n  \"currentTime\": 5757,\n  \"text\": \"string\",\n  \"version\": 3131,\n  \"data\": {\n    \"list\": [\n      {\n        \"id\": \"string\",\n        \"agencyId\": \"string\",\n        \"shortName\": \"string\",\n        \"longName\": \"string\",\n        \"description\": \"string\",\n        \"type\": 6803,\n        \"url\": \"http://bsvyqNJENgQAFHVHuKGdXqQxY.legt74derlZTCUBdM\",\n        \"color\": \"string\",\n        \"textColor\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"agencyId\": \"string\",\n        \"shortName\": \"string\",\n        \"longName\": \"string\",\n        \"description\": \"string\",\n        \"type\": 96,\n        \"url\": \"https://UakRkJ.otkel-B0J6aF6wst3nQAj\",\n        \"color\": \"string\",\n        \"textColor\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "670f9d15-a80b-4ab9-b5bc-e1c66813683e",
+          "name": "Get Shape",
+          "request": {
+            "name": "Get Shape",
+            "description": {
+              "content": "Get polyline shape details for a route or trip.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shape",
+                "{{id}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6118a3d7-08e7-4c25-b632-c50ac8540af4",
+              "name": "Shape polyline data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shape",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9132,\n  \"currentTime\": 2013,\n  \"text\": \"string\",\n  \"version\": 7687,\n  \"data\": {\n    \"entry\": {\n      \"points\": \"string\",\n      \"length\": 5530\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pugetsound.onebusaway.org/api/where",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) Unique route identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "id"
+    }
+  ],
+  "info": {
+    "_postman_id": "4078f57e-b247-4df5-91ff-f8c5cc761675",
+    "name": "Sound Transit OneBusAway Agencies Routes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Sound Transit OneBusAway API provides access to real-time and scheduled transit data for the Puget Sound region including routes, stops, arrivals, departures, and vehicle positions. Supports real-time data for the 1 Line, 2 Line, T Line, and ST Express bus routes.\n\nContact Support:\n Name: Sound Transit Open Transit Data\n Email: open_transit_data@soundtransit.org",
+      "type": "text/plain"
+    }
+  }
+}
