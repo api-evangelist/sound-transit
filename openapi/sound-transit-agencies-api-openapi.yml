@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   title: Sound Transit OneBusAway Agencies API
   description: The Sound Transit OneBusAway API provides access to real-time and scheduled transit data for the Puget Sound region including routes, stops, arrivals, departures, and vehicle positions. Supports real-time data for the 1 Line, 2 Line, T Line, and ST Express bus routes.
@@ -61,32 +61,25 @@ paths:
           description: Agency not found
 components:
   schemas:
-    BaseResponse:
+    Agency:
       type: object
       properties:
-        code:
-          type: integer
-          description: HTTP status code
-        currentTime:
-          type: integer
-          format: int64
-          description: Current server time in milliseconds
-        text:
+        id:
           type: string
-          description: Human-readable status message
-        version:
-          type: integer
-          description: API version
-    AgencyResponse:
-      allOf:
-      - $ref: '#/components/schemas/BaseResponse'
-      - type: object
-        properties:
-          data:
-            type: object
-            properties:
-              entry:
-                $ref: '#/components/schemas/Agency'
+        name:
+          type: string
+        url:
+          type: string
+          format: uri
+        timezone:
+          type: string
+        lang:
+          type: string
+        phone:
+          type: string
+        fareUrl:
+          type: string
+          format: uri
     AgenciesResponse:
       allOf:
       - $ref: '#/components/schemas/BaseResponse'
@@ -118,25 +111,32 @@ components:
         lonSpan:
           type: number
           format: float
-    Agency:
+    AgencyResponse:
+      allOf:
+      - $ref: '#/components/schemas/BaseResponse'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              entry:
+                $ref: '#/components/schemas/Agency'
+    BaseResponse:
       type: object
       properties:
-        id:
+        code:
+          type: integer
+          description: HTTP status code
+        currentTime:
+          type: integer
+          format: int64
+          description: Current server time in milliseconds
+        text:
           type: string
-        name:
-          type: string
-        url:
-          type: string
-          format: uri
-        timezone:
-          type: string
-        lang:
-          type: string
-        phone:
-          type: string
-        fareUrl:
-          type: string
-          format: uri
+          description: Human-readable status message
+        version:
+          type: integer
+          description: API version
   parameters:
     ApiKey:
       name: key

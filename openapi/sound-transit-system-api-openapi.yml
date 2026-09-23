@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Sound Transit OneBusAway Agencies System API
+  title: Sound Transit OneBusAway System API
   description: The Sound Transit OneBusAway API provides access to real-time and scheduled transit data for the Puget Sound region including routes, stops, arrivals, departures, and vehicle positions. Supports real-time data for the 1 Line, 2 Line, T Line, and ST Express bus routes.
   version: '2.0'
   contact:
