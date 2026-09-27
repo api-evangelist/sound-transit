@@ -129,28 +129,6 @@ paths:
                 $ref: '#/components/schemas/ShapeResponse'
 components:
   schemas:
-    RoutesResponse:
-      allOf:
-      - $ref: '#/components/schemas/BaseResponse'
-      - type: object
-        properties:
-          data:
-            type: object
-            properties:
-              list:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Route'
-    RouteResponse:
-      allOf:
-      - $ref: '#/components/schemas/BaseResponse'
-      - type: object
-        properties:
-          data:
-            type: object
-            properties:
-              entry:
-                $ref: '#/components/schemas/Route'
     ShapeResponse:
       allOf:
       - $ref: '#/components/schemas/BaseResponse'
@@ -167,6 +145,22 @@ components:
                     description: Encoded polyline string
                   length:
                     type: integer
+    BaseResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: HTTP status code
+        currentTime:
+          type: integer
+          format: int64
+          description: Current server time in milliseconds
+        text:
+          type: string
+          description: Human-readable status message
+        version:
+          type: integer
+          description: API version
     Route:
       type: object
       properties:
@@ -190,22 +184,28 @@ components:
           type: string
         textColor:
           type: string
-    BaseResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-          description: HTTP status code
-        currentTime:
-          type: integer
-          format: int64
-          description: Current server time in milliseconds
-        text:
-          type: string
-          description: Human-readable status message
-        version:
-          type: integer
-          description: API version
+    RouteResponse:
+      allOf:
+      - $ref: '#/components/schemas/BaseResponse'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              entry:
+                $ref: '#/components/schemas/Route'
+    RoutesResponse:
+      allOf:
+      - $ref: '#/components/schemas/BaseResponse'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              list:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Route'
   parameters:
     ApiKey:
       name: key

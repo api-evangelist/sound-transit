@@ -101,6 +101,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/ArrivalAndDepartureResponse'
 components:
+  parameters:
+    ApiKey:
+      name: key
+      in: query
+      required: true
+      description: API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)
+      schema:
+        type: string
   schemas:
     ArrivalAndDepartureResponse:
       allOf:
@@ -148,21 +156,6 @@ components:
           type: string
         tripHeadsign:
           type: string
-    ArrivalsAndDeparturesResponse:
-      allOf:
-      - $ref: '#/components/schemas/BaseResponse'
-      - type: object
-        properties:
-          data:
-            type: object
-            properties:
-              entry:
-                type: object
-                properties:
-                  arrivalsAndDepartures:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/ArrivalAndDeparture'
     BaseResponse:
       type: object
       properties:
@@ -179,11 +172,18 @@ components:
         version:
           type: integer
           description: API version
-  parameters:
-    ApiKey:
-      name: key
-      in: query
-      required: true
-      description: API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)
-      schema:
-        type: string
+    ArrivalsAndDeparturesResponse:
+      allOf:
+      - $ref: '#/components/schemas/BaseResponse'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              entry:
+                type: object
+                properties:
+                  arrivalsAndDepartures:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ArrivalAndDeparture'

@@ -62,19 +62,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/VehiclesResponse'
 components:
+  parameters:
+    ApiKey:
+      name: key
+      in: query
+      required: true
+      description: API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)
+      schema:
+        type: string
   schemas:
-    VehiclesResponse:
-      allOf:
-      - $ref: '#/components/schemas/BaseResponse'
-      - type: object
-        properties:
-          data:
-            type: object
-            properties:
-              list:
-                type: array
-                items:
-                  $ref: '#/components/schemas/VehicleStatus'
     VehicleStatus:
       type: object
       properties:
@@ -101,6 +97,18 @@ components:
           type: string
         phase:
           type: string
+    VehiclesResponse:
+      allOf:
+      - $ref: '#/components/schemas/BaseResponse'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              list:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VehicleStatus'
     TripDetailsResponse:
       allOf:
       - $ref: '#/components/schemas/BaseResponse'
@@ -139,11 +147,3 @@ components:
         version:
           type: integer
           description: API version
-  parameters:
-    ApiKey:
-      name: key
-      in: query
-      required: true
-      description: API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)
-      schema:
-        type: string

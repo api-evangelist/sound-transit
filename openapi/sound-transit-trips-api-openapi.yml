@@ -140,44 +140,25 @@ paths:
                 $ref: '#/components/schemas/TripsResponse'
 components:
   schemas:
-    BaseResponse:
+    Trip:
       type: object
       properties:
-        code:
-          type: integer
-          description: HTTP status code
-        currentTime:
-          type: integer
-          format: int64
-          description: Current server time in milliseconds
-        text:
+        id:
           type: string
-          description: Human-readable status message
-        version:
-          type: integer
-          description: API version
-    TripResponse:
-      allOf:
-      - $ref: '#/components/schemas/BaseResponse'
-      - type: object
-        properties:
-          data:
-            type: object
-            properties:
-              entry:
-                $ref: '#/components/schemas/Trip'
-    TripsResponse:
-      allOf:
-      - $ref: '#/components/schemas/BaseResponse'
-      - type: object
-        properties:
-          data:
-            type: object
-            properties:
-              list:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Trip'
+        routeId:
+          type: string
+        serviceId:
+          type: string
+        tripHeadsign:
+          type: string
+        tripShortName:
+          type: string
+        directionId:
+          type: string
+        shapeId:
+          type: string
+        blockId:
+          type: string
     TripDetailsResponse:
       allOf:
       - $ref: '#/components/schemas/BaseResponse'
@@ -200,25 +181,44 @@ components:
                     type: array
                     items:
                       type: object
-    Trip:
+    TripResponse:
+      allOf:
+      - $ref: '#/components/schemas/BaseResponse'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              entry:
+                $ref: '#/components/schemas/Trip'
+    BaseResponse:
       type: object
       properties:
-        id:
+        code:
+          type: integer
+          description: HTTP status code
+        currentTime:
+          type: integer
+          format: int64
+          description: Current server time in milliseconds
+        text:
           type: string
-        routeId:
-          type: string
-        serviceId:
-          type: string
-        tripHeadsign:
-          type: string
-        tripShortName:
-          type: string
-        directionId:
-          type: string
-        shapeId:
-          type: string
-        blockId:
-          type: string
+          description: Human-readable status message
+        version:
+          type: integer
+          description: API version
+    TripsResponse:
+      allOf:
+      - $ref: '#/components/schemas/BaseResponse'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              list:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Trip'
   parameters:
     ApiKey:
       name: key

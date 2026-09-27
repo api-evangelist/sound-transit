@@ -60,7 +60,62 @@ paths:
         '404':
           description: Agency not found
 components:
+  parameters:
+    ApiKey:
+      name: key
+      in: query
+      required: true
+      description: API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)
+      schema:
+        type: string
   schemas:
+    AgencyWithCoverage:
+      type: object
+      properties:
+        agencyId:
+          type: string
+        lat:
+          type: number
+          format: float
+        lon:
+          type: number
+          format: float
+        latSpan:
+          type: number
+          format: float
+        lonSpan:
+          type: number
+          format: float
+    AgenciesResponse:
+      allOf:
+      - $ref: '#/components/schemas/BaseResponse'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              list:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AgencyWithCoverage'
+              references:
+                type: object
+    BaseResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: HTTP status code
+        currentTime:
+          type: integer
+          format: int64
+          description: Current server time in milliseconds
+        text:
+          type: string
+          description: Human-readable status message
+        version:
+          type: integer
+          description: API version
     Agency:
       type: object
       properties:
@@ -80,37 +135,6 @@ components:
         fareUrl:
           type: string
           format: uri
-    AgenciesResponse:
-      allOf:
-      - $ref: '#/components/schemas/BaseResponse'
-      - type: object
-        properties:
-          data:
-            type: object
-            properties:
-              list:
-                type: array
-                items:
-                  $ref: '#/components/schemas/AgencyWithCoverage'
-              references:
-                type: object
-    AgencyWithCoverage:
-      type: object
-      properties:
-        agencyId:
-          type: string
-        lat:
-          type: number
-          format: float
-        lon:
-          type: number
-          format: float
-        latSpan:
-          type: number
-          format: float
-        lonSpan:
-          type: number
-          format: float
     AgencyResponse:
       allOf:
       - $ref: '#/components/schemas/BaseResponse'
@@ -121,27 +145,3 @@ components:
             properties:
               entry:
                 $ref: '#/components/schemas/Agency'
-    BaseResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-          description: HTTP status code
-        currentTime:
-          type: integer
-          format: int64
-          description: Current server time in milliseconds
-        text:
-          type: string
-          description: Human-readable status message
-        version:
-          type: integer
-          description: API version
-  parameters:
-    ApiKey:
-      name: key
-      in: query
-      required: true
-      description: API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)
-      schema:
-        type: string
