@@ -110,6 +110,37 @@ components:
       schema:
         type: string
   schemas:
+    BaseResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: HTTP status code
+        currentTime:
+          type: integer
+          format: int64
+          description: Current server time in milliseconds
+        text:
+          type: string
+          description: Human-readable status message
+        version:
+          type: integer
+          description: API version
+    ArrivalsAndDeparturesResponse:
+      allOf:
+      - $ref: '#/components/schemas/BaseResponse'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              entry:
+                type: object
+                properties:
+                  arrivalsAndDepartures:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ArrivalAndDeparture'
     ArrivalAndDepartureResponse:
       allOf:
       - $ref: '#/components/schemas/BaseResponse'
@@ -156,34 +187,3 @@ components:
           type: string
         tripHeadsign:
           type: string
-    BaseResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-          description: HTTP status code
-        currentTime:
-          type: integer
-          format: int64
-          description: Current server time in milliseconds
-        text:
-          type: string
-          description: Human-readable status message
-        version:
-          type: integer
-          description: API version
-    ArrivalsAndDeparturesResponse:
-      allOf:
-      - $ref: '#/components/schemas/BaseResponse'
-      - type: object
-        properties:
-          data:
-            type: object
-            properties:
-              entry:
-                type: object
-                properties:
-                  arrivalsAndDepartures:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/ArrivalAndDeparture'

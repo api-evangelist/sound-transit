@@ -181,16 +181,6 @@ components:
                     type: array
                     items:
                       type: object
-    TripResponse:
-      allOf:
-      - $ref: '#/components/schemas/BaseResponse'
-      - type: object
-        properties:
-          data:
-            type: object
-            properties:
-              entry:
-                $ref: '#/components/schemas/Trip'
     BaseResponse:
       type: object
       properties:
@@ -219,6 +209,16 @@ components:
                 type: array
                 items:
                   $ref: '#/components/schemas/Trip'
+    TripResponse:
+      allOf:
+      - $ref: '#/components/schemas/BaseResponse'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              entry:
+                $ref: '#/components/schemas/Trip'
   parameters:
     ApiKey:
       name: key

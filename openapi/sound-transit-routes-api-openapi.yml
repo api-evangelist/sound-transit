@@ -128,8 +128,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/ShapeResponse'
 components:
+  parameters:
+    ApiKey:
+      name: key
+      in: query
+      required: true
+      description: API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)
+      schema:
+        type: string
   schemas:
-    ShapeResponse:
+    RouteResponse:
       allOf:
       - $ref: '#/components/schemas/BaseResponse'
       - type: object
@@ -138,13 +146,7 @@ components:
             type: object
             properties:
               entry:
-                type: object
-                properties:
-                  points:
-                    type: string
-                    description: Encoded polyline string
-                  length:
-                    type: integer
+                $ref: '#/components/schemas/Route'
     BaseResponse:
       type: object
       properties:
@@ -161,6 +163,34 @@ components:
         version:
           type: integer
           description: API version
+    RoutesResponse:
+      allOf:
+      - $ref: '#/components/schemas/BaseResponse'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              list:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Route'
+    ShapeResponse:
+      allOf:
+      - $ref: '#/components/schemas/BaseResponse'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              entry:
+                type: object
+                properties:
+                  points:
+                    type: string
+                    description: Encoded polyline string
+                  length:
+                    type: integer
     Route:
       type: object
       properties:
@@ -184,33 +214,3 @@ components:
           type: string
         textColor:
           type: string
-    RouteResponse:
-      allOf:
-      - $ref: '#/components/schemas/BaseResponse'
-      - type: object
-        properties:
-          data:
-            type: object
-            properties:
-              entry:
-                $ref: '#/components/schemas/Route'
-    RoutesResponse:
-      allOf:
-      - $ref: '#/components/schemas/BaseResponse'
-      - type: object
-        properties:
-          data:
-            type: object
-            properties:
-              list:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Route'
-  parameters:
-    ApiKey:
-      name: key
-      in: query
-      required: true
-      description: API key obtained from Sound Transit (contact oba_api_key@soundtransit.org)
-      schema:
-        type: string

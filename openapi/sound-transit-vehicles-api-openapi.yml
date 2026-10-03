@@ -71,6 +71,56 @@ components:
       schema:
         type: string
   schemas:
+    TripDetailsResponse:
+      allOf:
+      - $ref: '#/components/schemas/BaseResponse'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              entry:
+                type: object
+                properties:
+                  tripId:
+                    type: string
+                  serviceDate:
+                    type: integer
+                    format: int64
+                  status:
+                    type: object
+                  stopTimes:
+                    type: array
+                    items:
+                      type: object
+    VehiclesResponse:
+      allOf:
+      - $ref: '#/components/schemas/BaseResponse'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              list:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VehicleStatus'
+    BaseResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: HTTP status code
+        currentTime:
+          type: integer
+          format: int64
+          description: Current server time in milliseconds
+        text:
+          type: string
+          description: Human-readable status message
+        version:
+          type: integer
+          description: API version
     VehicleStatus:
       type: object
       properties:
@@ -97,53 +147,3 @@ components:
           type: string
         phase:
           type: string
-    VehiclesResponse:
-      allOf:
-      - $ref: '#/components/schemas/BaseResponse'
-      - type: object
-        properties:
-          data:
-            type: object
-            properties:
-              list:
-                type: array
-                items:
-                  $ref: '#/components/schemas/VehicleStatus'
-    TripDetailsResponse:
-      allOf:
-      - $ref: '#/components/schemas/BaseResponse'
-      - type: object
-        properties:
-          data:
-            type: object
-            properties:
-              entry:
-                type: object
-                properties:
-                  tripId:
-                    type: string
-                  serviceDate:
-                    type: integer
-                    format: int64
-                  status:
-                    type: object
-                  stopTimes:
-                    type: array
-                    items:
-                      type: object
-    BaseResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-          description: HTTP status code
-        currentTime:
-          type: integer
-          format: int64
-          description: Current server time in milliseconds
-        text:
-          type: string
-          description: Human-readable status message
-        version:
-          type: integer
-          description: API version

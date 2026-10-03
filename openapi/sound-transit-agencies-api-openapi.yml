@@ -86,20 +86,6 @@ components:
         lonSpan:
           type: number
           format: float
-    AgenciesResponse:
-      allOf:
-      - $ref: '#/components/schemas/BaseResponse'
-      - type: object
-        properties:
-          data:
-            type: object
-            properties:
-              list:
-                type: array
-                items:
-                  $ref: '#/components/schemas/AgencyWithCoverage'
-              references:
-                type: object
     BaseResponse:
       type: object
       properties:
@@ -116,6 +102,30 @@ components:
         version:
           type: integer
           description: API version
+    AgencyResponse:
+      allOf:
+      - $ref: '#/components/schemas/BaseResponse'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              entry:
+                $ref: '#/components/schemas/Agency'
+    AgenciesResponse:
+      allOf:
+      - $ref: '#/components/schemas/BaseResponse'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              list:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AgencyWithCoverage'
+              references:
+                type: object
     Agency:
       type: object
       properties:
@@ -135,13 +145,3 @@ components:
         fareUrl:
           type: string
           format: uri
-    AgencyResponse:
-      allOf:
-      - $ref: '#/components/schemas/BaseResponse'
-      - type: object
-        properties:
-          data:
-            type: object
-            properties:
-              entry:
-                $ref: '#/components/schemas/Agency'
