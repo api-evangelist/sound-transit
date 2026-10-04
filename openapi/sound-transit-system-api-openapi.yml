@@ -51,22 +51,6 @@ paths:
                 $ref: '#/components/schemas/ConfigResponse'
 components:
   schemas:
-    BaseResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-          description: HTTP status code
-        currentTime:
-          type: integer
-          format: int64
-          description: Current server time in milliseconds
-        text:
-          type: string
-          description: Human-readable status message
-        version:
-          type: integer
-          description: API version
     CurrentTimeResponse:
       allOf:
       - $ref: '#/components/schemas/BaseResponse'
@@ -83,6 +67,22 @@ components:
                     format: int64
                   readableTime:
                     type: string
+    BaseResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: HTTP status code
+        currentTime:
+          type: integer
+          format: int64
+          description: Current server time in milliseconds
+        text:
+          type: string
+          description: Human-readable status message
+        version:
+          type: integer
+          description: API version
     ConfigResponse:
       allOf:
       - $ref: '#/components/schemas/BaseResponse'
