@@ -166,6 +166,12 @@ apis:
     url: >-
       https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd/otd-downloads
 common:
+  - type: Plans
+    url: plans/sound-transit-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/sound-transit-rate-limits.yml
+  - type: FinOps
+    url: finops/sound-transit-finops.yml
   - type: AgenticAccess
     url: agentic-access/sound-transit-agentic-access.yml
   - type: DomainSecurity
