@@ -140,6 +140,16 @@ paths:
                 $ref: '#/components/schemas/TripsResponse'
 components:
   schemas:
+    TripResponse:
+      allOf:
+      - $ref: '#/components/schemas/BaseResponse'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              entry:
+                $ref: '#/components/schemas/Trip'
     TripsResponse:
       allOf:
       - $ref: '#/components/schemas/BaseResponse'
@@ -152,35 +162,6 @@ components:
                 type: array
                 items:
                   $ref: '#/components/schemas/Trip'
-    TripResponse:
-      allOf:
-      - $ref: '#/components/schemas/BaseResponse'
-      - type: object
-        properties:
-          data:
-            type: object
-            properties:
-              entry:
-                $ref: '#/components/schemas/Trip'
-    Trip:
-      type: object
-      properties:
-        id:
-          type: string
-        routeId:
-          type: string
-        serviceId:
-          type: string
-        tripHeadsign:
-          type: string
-        tripShortName:
-          type: string
-        directionId:
-          type: string
-        shapeId:
-          type: string
-        blockId:
-          type: string
     TripDetailsResponse:
       allOf:
       - $ref: '#/components/schemas/BaseResponse'
@@ -203,6 +184,25 @@ components:
                     type: array
                     items:
                       type: object
+    Trip:
+      type: object
+      properties:
+        id:
+          type: string
+        routeId:
+          type: string
+        serviceId:
+          type: string
+        tripHeadsign:
+          type: string
+        tripShortName:
+          type: string
+        directionId:
+          type: string
+        shapeId:
+          type: string
+        blockId:
+          type: string
     BaseResponse:
       type: object
       properties:

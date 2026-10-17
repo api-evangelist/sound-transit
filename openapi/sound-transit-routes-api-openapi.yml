@@ -168,18 +168,6 @@ components:
                     description: Encoded polyline string
                   length:
                     type: integer
-    RoutesResponse:
-      allOf:
-      - $ref: '#/components/schemas/BaseResponse'
-      - type: object
-        properties:
-          data:
-            type: object
-            properties:
-              list:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Route'
     BaseResponse:
       type: object
       properties:
@@ -196,6 +184,18 @@ components:
         version:
           type: integer
           description: API version
+    RoutesResponse:
+      allOf:
+      - $ref: '#/components/schemas/BaseResponse'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              list:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Route'
     RouteResponse:
       allOf:
       - $ref: '#/components/schemas/BaseResponse'

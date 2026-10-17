@@ -102,7 +102,7 @@ paths:
                 $ref: '#/components/schemas/ArrivalAndDepartureResponse'
 components:
   schemas:
-    ArrivalsAndDeparturesResponse:
+    ArrivalAndDepartureResponse:
       allOf:
       - $ref: '#/components/schemas/BaseResponse'
       - type: object
@@ -111,28 +111,7 @@ components:
             type: object
             properties:
               entry:
-                type: object
-                properties:
-                  arrivalsAndDepartures:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/ArrivalAndDeparture'
-    BaseResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-          description: HTTP status code
-        currentTime:
-          type: integer
-          format: int64
-          description: Current server time in milliseconds
-        text:
-          type: string
-          description: Human-readable status message
-        version:
-          type: integer
-          description: API version
+                $ref: '#/components/schemas/ArrivalAndDeparture'
     ArrivalAndDeparture:
       type: object
       properties:
@@ -169,7 +148,7 @@ components:
           type: string
         tripHeadsign:
           type: string
-    ArrivalAndDepartureResponse:
+    ArrivalsAndDeparturesResponse:
       allOf:
       - $ref: '#/components/schemas/BaseResponse'
       - type: object
@@ -178,7 +157,28 @@ components:
             type: object
             properties:
               entry:
-                $ref: '#/components/schemas/ArrivalAndDeparture'
+                type: object
+                properties:
+                  arrivalsAndDepartures:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ArrivalAndDeparture'
+    BaseResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: HTTP status code
+        currentTime:
+          type: integer
+          format: int64
+          description: Current server time in milliseconds
+        text:
+          type: string
+          description: Human-readable status message
+        version:
+          type: integer
+          description: API version
   parameters:
     ApiKey:
       name: key

@@ -137,16 +137,6 @@ paths:
                 $ref: '#/components/schemas/StopScheduleResponse'
 components:
   schemas:
-    StopScheduleResponse:
-      allOf:
-      - $ref: '#/components/schemas/BaseResponse'
-      - type: object
-        properties:
-          data:
-            type: object
-            properties:
-              entry:
-                type: object
     StopsResponse:
       allOf:
       - $ref: '#/components/schemas/BaseResponse'
@@ -194,6 +184,32 @@ components:
             type: string
         wheelchairBoarding:
           type: string
+    BaseResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: HTTP status code
+        currentTime:
+          type: integer
+          format: int64
+          description: Current server time in milliseconds
+        text:
+          type: string
+          description: Human-readable status message
+        version:
+          type: integer
+          description: API version
+    StopScheduleResponse:
+      allOf:
+      - $ref: '#/components/schemas/BaseResponse'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              entry:
+                type: object
     StopsForRouteResponse:
       allOf:
       - $ref: '#/components/schemas/BaseResponse'
@@ -215,22 +231,6 @@ components:
                     type: array
                     items:
                       type: object
-    BaseResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-          description: HTTP status code
-        currentTime:
-          type: integer
-          format: int64
-          description: Current server time in milliseconds
-        text:
-          type: string
-          description: Human-readable status message
-        version:
-          type: integer
-          description: API version
   parameters:
     ApiKey:
       name: key
