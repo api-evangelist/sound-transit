@@ -1,4 +1,4 @@
-# Sound Transit (sound-transit)
+# Sound Transit
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,74 +66,164 @@
 
 Sound Transit is a regional transit authority serving the Seattle-Puget Sound area of Washington State, operating light rail, commuter rail, and express bus services. The Sound Transit Open Transit Data (OTD) program provides GTFS static and real-time data feeds, OneBusAway API access, and GTFS-RT service alerts for transit application developers and researchers.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/sound-transit/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/sound-transit/refs/heads/main/apis.yml)
+**Areas:** Transit · Transportation · GTFS · Real-Time · Public Transit · Government · Seattle
 
-## Scope
+## Sound Transit on APIs.io
 
-- **Type:** Index
-- **Position:** Consumer
-- **Access:** 3rd-Party
+Everything profiled for Sound Transit is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/sound-transit/](https://apis.io/providers/sound-transit/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (7)
 
-- Transit
-- Transportation
-- GTFS
-- Real-Time
-- Public Transit
-- Government
-- Seattle
+- [Sound Transit Agencies API](https://apis.io/apis/sound-transit/sound-transit-agencies-api/) — Transit agency information and coverage
+- [Sound Transit Arrivals And Departures API](https://apis.io/apis/sound-transit/sound-transit-arrivals-and-departures-api/) — Real-time and scheduled arrival/departure information
+- [Sound Transit Routes API](https://apis.io/apis/sound-transit/sound-transit-routes-api/) — Route definitions and schedules
+- [Sound Transit Stops API](https://apis.io/apis/sound-transit/sound-transit-stops-api/) — Stop locations and schedules
+- [Sound Transit System API](https://apis.io/apis/sound-transit/sound-transit-system-api/) — System utilities and configuration
+- [Sound Transit Trips API](https://apis.io/apis/sound-transit/sound-transit-trips-api/) — Trip details and active vehicle positions
+- [Sound Transit Vehicles API](https://apis.io/apis/sound-transit/sound-transit-vehicles-api/) — Active vehicle locations and assignments
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-03-16
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Sound Transit OneBusAway API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-The Sound Transit OneBusAway API provides access to real-time and scheduled transit data for the Puget Sound region. Supports route information, stop locations, real-time arrivals and departures, vehicle positions, and trip details for 1 Line, 2 Line, T Line, and ST Express routes.
+- [Sound Transit Agentic Access](https://apis.io/agentic-access/sound-transit/sound-transit-agentic-access/)
 
-- **Human URL:** [https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd](https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd)
-- **Base URL:** `https://api.pugetsound.onebusaway.org/api/where`
+#### JSON Schema (2)
 
-#### Tags
+The data models the API reads and writes.
 
-- Transit
-- GTFS
-- Real-Time
-- Routes
-- Stops
-- Vehicles
+- [Sound Transit Arrival And Departure](https://apis.io/schemas/sound-transit/sound-transit-arrival/)
+- [Sound Transit Stop](https://apis.io/schemas/sound-transit/sound-transit-stop/)
 
-#### Properties
+#### JSON Structure (1)
 
-- [Documentation](https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd)
-- [Reference](http://developer.onebusaway.org/)
-- [G T F S  Downloads](https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd/otd-downloads)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/sound-transit/refs/heads/main/openapi/sound-transit-onebusaway-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/sound-transit-onebusaway.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/sound-transit-onebusaway.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Data models expressed in JSON Structure.
 
-## Common Properties
+- [Sound Transit Arrivals Structure](https://apis.io/json-structure/sound-transit/sound-transit-arrivals-structure/)
 
-- [GitHub Organization](https://github.com/SoundTransit)
-- [LinkedIn](https://www.linkedin.com/company/sound-transit)
-- [Portal](https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd)
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Sound Transit Context](https://apis.io/jsonld/sound-transit/sound-transit-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Sound Transit Vocabulary](https://apis.io/vocabularies/sound-transit/sound-transit-vocabulary/)
+
+#### Examples (1)
+
+Example requests and responses.
+
+- [Sound Transit Get Arrivals Example](https://apis.io/examples/sound-transit/sound-transit-get-arrivals-example/)
+
+#### Collections (8)
+
+Postman and Open Collection request collections.
+
+- [Sound Transit OneBusAway Agencies API](https://apis.io/collections/sound-transit/open-sound-transit-agencies-api/)
+- [Sound Transit OneBusAway Agencies Arrivals And Departures API](https://apis.io/collections/sound-transit/open-sound-transit-arrivals-and-departures-api/)
+- [Sound Transit OneBusAway API](https://apis.io/collections/sound-transit/open-sound-transit-onebusaway/)
+- [Sound Transit OneBusAway Agencies Routes API](https://apis.io/collections/sound-transit/open-sound-transit-routes-api/)
+- [Sound Transit OneBusAway Agencies Stops API](https://apis.io/collections/sound-transit/open-sound-transit-stops-api/)
+- [Sound Transit OneBusAway Agencies System API](https://apis.io/collections/sound-transit/open-sound-transit-system-api/)
+- [Sound Transit OneBusAway Agencies Trips API](https://apis.io/collections/sound-transit/open-sound-transit-trips-api/)
+- [Sound Transit OneBusAway Agencies Vehicles API](https://apis.io/collections/sound-transit/open-sound-transit-vehicles-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Sound Transit — jsonschema rules](https://apis.io/rules/sound-transit/sound-transit-jsonschema-spectral-rules/)
+- [Sound Transit API Rules](https://apis.io/rules/sound-transit/sound-transit-rules/)
+
+#### Security (1)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Sound Transit Domain Security](https://apis.io/security/sound-transit/sound-transit-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Sound Transit Plans Pricing](https://apis.io/plans/sound-transit/sound-transit-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Sound Transit Rate Limits](https://apis.io/rate-limits/sound-transit/sound-transit-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Sound Transit Finops](https://apis.io/finops/sound-transit/sound-transit-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://www.soundtransit.org/)
-- [G T F S  Static  Feeds](https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd/otd-downloads)
-- [G T F S- R T  Service  Alerts ( Protocol  Buffers)](https://s3.amazonaws.com/st-service-alerts-prod/alerts.pb)
-- [G T F S- R T  Service  Alerts ( J S O N)](https://s3.amazonaws.com/st-service-alerts-prod/alerts_pb.json)
-- [Transitland  Feed](https://www.transit.land/feeds/f-c23-soundtransit)
-- [One Bus Away](https://onebusaway.org/)
-- [Terms of  Use](https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd/transit-data-terms-use)
-- [A P I  Key  Request](mailto:oba_api_key@soundtransit.org)
-- [Support](mailto:open_transit_data@soundtransit.org)
-- [Trip  Planner](https://tripplanner.kingcounty.gov/)
-- [Real- Time  Coverage](https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd)
+- [Terms of service](https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd/transit-data-terms-use)
+- [GitHub](https://github.com/SoundTransit)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 32.8** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 52.4 |
+| Contract governance | 13.6 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 31.0 |
+| Access clarity | 18.4 |
+
+**Agent readiness 17.8** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | na |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 14.7** — Government & Public Sector
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/sound-transit/](https://apis.io/providers/sound-transit/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Sound Transit: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/sound-transit/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
